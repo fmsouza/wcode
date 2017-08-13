@@ -1,5 +1,7 @@
 import React from 'react';
-import { Editor, Header, Sidebar } from './components';
+import { Editor } from './components/editor';
+import { Header } from './components/header';
+import { Sidebar } from './components/sidebar';
 import './App.css';
 
 export default class App extends React.Component {
