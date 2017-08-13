@@ -1,0 +1,15 @@
+.Toolbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 48px;
+    padding-top: 16px;
+    background-color: #333333;
+}
+
+.Toolbar .icon {
+    fill: #FFFFFF;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 16px;
+}

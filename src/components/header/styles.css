@@ -1,14 +1,23 @@
 .Header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: #007ACC;
     color: white;
     height: 20px;
-    padding-left: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
     font-size: 14px;
 
 }
 
+.Header a, .Header span {
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+}
+
 .Header .title {
     font-weight: bold;
+    font-size: 14px;
 }

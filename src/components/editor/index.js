@@ -34,7 +34,7 @@ export class Editor extends React.Component {
     renderOpenedFileTabs() {
         const { files } = this.state;
         if (files.length === 0) return null;
-        return files.map((file, key) => <FileTab file={file} />);
+        return files.map((file, key) => <FileTab key={key} file={file} />);
     }
 
     renderEditorView() {
