@@ -2,7 +2,7 @@ import React from 'react';
 import MonacoEditor from 'react-monaco-editor';
 import './styles.css';
 
-export class TextEditor extends React.Component {
+export default class TextEditor extends React.Component {
 
     state = { code: '' };
     
