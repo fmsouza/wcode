@@ -1,5 +1,7 @@
 import React from 'react';
 import { Toolbar } from '../toolbar';
+import { Explorer } from '../explorer';
+import { Search } from '../search';
 import './styles.css';
 
 export class Sidebar extends React.Component {
@@ -10,10 +12,10 @@ export class Sidebar extends React.Component {
         switch (this.state.selectedTool) {
             default:
             case 'explorer':
-                return <span>Explorer</span>;
+                return <Explorer />;
                 
             case 'search':
-                return <span>Search</span>;
+                return <Search />;
         }
     }
 
