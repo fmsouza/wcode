@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.App .body {
+    background-color: #1E1E1E;
+    display: flex;
+    flex-direction: row;
+}

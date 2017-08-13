@@ -1,0 +1,15 @@
+.FileTab {
+    cursor: pointer;
+    background-color: #1E1E1E;
+    width: 100px;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.FileTab span {
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
