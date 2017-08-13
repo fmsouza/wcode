@@ -6,7 +6,7 @@ import * as Icons from './components';
  * @param {object} props - React component properties
  * @return {React.Component}
  */
-export const Icon = ({ name, ...props }) => {
+export default ({ name, ...props }) => {
     switch (name) {
         case 'file': return <Icons.File {...props} />;
         default: return null;

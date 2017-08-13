@@ -1,7 +1,7 @@
 import React from 'react';
-import { Editor } from './components/editor';
-import { Header } from './components/header';
-import { Sidebar } from './components/sidebar';
+import Editor from './components/editor';
+import Header from './components/header';
+import Sidebar from './components/sidebar';
 import './App.css';
 
 export default class App extends React.Component {
@@ -39,7 +39,7 @@ export default class App extends React.Component {
         const { body: { width, height } } = this.state;
         return (
             <div className="App">
-                <Header/>
+                <Header />
                 <div className="body" style={{ width, height }}>
                     <Sidebar />
                     <Editor ref="editor" />

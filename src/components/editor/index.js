@@ -1,9 +1,9 @@
 import React from 'react';
-import { FileTab } from '../fileTab';
-import { TextEditor } from '../textEditor';
+import FileTab from '../fileTab';
+import TextEditor from '../textEditor';
 import './styles.css';
 
-export class Editor extends React.Component {
+export default class Editor extends React.Component {
 
     state = { files: [], selected: null, body: { width: 0, height: 0 } };
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Toolbar } from '../toolbar';
-import { Explorer } from '../explorer';
-import { Search } from '../search';
+import ActivityBar from '../activityBar';
+import Explorer from '../explorer';
+import Search from '../search';
 import './styles.css';
 
-export class Sidebar extends React.Component {
+export default class Sidebar extends React.Component {
 
     state = { selectedTool: null };
 
@@ -22,7 +22,7 @@ export class Sidebar extends React.Component {
     render() {
         return (
             <div className="Sidebar" {...this.props}>
-                <Toolbar onToolSelect={(selectedTool) => this.setState({ selectedTool })} />
+                <ActivityBar onToolSelect={(selectedTool) => this.setState({ selectedTool })} />
                 <div className="container">
                     {this.renderContext()}
                 </div>
