@@ -1,4 +1,4 @@
-.Header {
+.StatusBar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -7,15 +7,10 @@
     height: 20px;
     padding-left: 5px;
     padding-right: 5px;
-    font-size: 12px;
-
 }
 
-.Header a, .Header span {
+.StatusBar a, .StatusBar span {
     text-decoration: none;
     color: white;
-}
-
-.Header .title {
-    font-weight: bold;
+    font-size: 12px;
 }

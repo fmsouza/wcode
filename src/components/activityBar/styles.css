@@ -2,9 +2,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     width: 48px;
     padding-top: 16px;
     background-color: #333333;
+}
+
+.Toolbar > div {
+    display: flex;
+    flex-direction: column;
 }
 
 .Toolbar .icon {

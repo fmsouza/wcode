@@ -2,6 +2,7 @@ import React from 'react';
 import Editor from './components/editor';
 import Header from './components/header';
 import Sidebar from './components/sidebar';
+import StatusBar from './components/statusBar';
 import './App.css';
 import src from './mock';
 
@@ -11,7 +12,7 @@ export default class App extends React.Component {
 
     updateDimensions() {
         const width = window.innerWidth;
-        const height = window.innerHeight - 20;
+        const height = window.innerHeight - 40;
         this.setState({ body: { width, height } });
     }
 
@@ -45,6 +46,7 @@ export default class App extends React.Component {
                     <Sidebar />
                     <Editor ref="editor" />
                 </div>
+                <StatusBar />
             </div>
         );
     }

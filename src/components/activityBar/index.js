@@ -4,6 +4,7 @@ import './styles.css';
 
 const TOOL_EXPLORER = 'explorer';
 const TOOL_SEARCH = 'search';
+const TOOL_SETTINGS = 'settings';
 
 export default class ActivityBar extends React.Component {
 
@@ -23,16 +24,19 @@ export default class ActivityBar extends React.Component {
     render() {
         return (
             <div className="Toolbar">
-                <Icon
-                    name="explorer"
-                    className={`icon ${this.isActive(TOOL_EXPLORER)}`}
-                    onClick={() => this.selectOption(TOOL_EXPLORER)}
-                />
-                <Icon
-                    name="search"
-                    className={`icon ${this.isActive(TOOL_SEARCH)}`}
-                    onClick={() => this.selectOption(TOOL_SEARCH)}
-                />
+                <div className="top">
+                    <Icon
+                        name="explorer"
+                        className={`icon ${this.isActive(TOOL_EXPLORER)}`}
+                        onClick={() => this.selectOption(TOOL_EXPLORER)}
+                    />
+                    <Icon
+                        name="search"
+                        className={`icon ${this.isActive(TOOL_SEARCH)}`}
+                        onClick={() => this.selectOption(TOOL_SEARCH)}
+                    />
+                </div>
+                <div className="bottom" />
             </div>
         );
     }
