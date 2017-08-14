@@ -20,16 +20,22 @@
     font-weight: bold !important;
 }
 
-.FileTree .container > .directory {
-    padding: 0;
-}
-
-.FileTree .container > .directory .item {
+.FileTree .container {
+    overflow-y: auto;
 }
 
 .FileTree .container > .directory, .FileTree .container > .directory * {
     margin: 0;
+    padding: 0;
     list-style: none;
+}
+
+.FileTree .container > .directory ul .item {
+    padding-left: 10px;
+}
+
+.FileTree .container > .directory ul .subFolder {
+    padding-left: 10px;
 }
 
 .FileTree .container > .directory .itemFile {
