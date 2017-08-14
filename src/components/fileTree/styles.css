@@ -39,7 +39,7 @@
 }
 
 .FileTree .container > .directory .item.active, .FileTree .container > .directory .item.active:hover {
-    background-color: #3F3F46;
+    background-color: #094771;
 }
 
 .FileTree .container > .directory ul .subFolder {
