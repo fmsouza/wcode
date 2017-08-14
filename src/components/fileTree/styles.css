@@ -1,0 +1,21 @@
+.FileTree {
+    
+}
+
+.FileTree > .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #383838;
+    height: 20px;
+    padding-left: 4px;
+    cursor: pointer;
+}
+
+.FileTree .title .icon {
+    fill: #e8e8e8;
+}
+
+.FileTree .title span {
+    font-weight: bold !important;
+}

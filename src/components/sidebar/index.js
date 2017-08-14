@@ -10,12 +10,9 @@ export default class Sidebar extends React.Component {
 
     renderContext() {
         switch (this.state.selectedTool) {
-            default:
-            case 'explorer':
-                return <Explorer />;
-                
-            case 'search':
-                return <Search />;
+            case 'explorer': return <Explorer />;
+            case 'search': return <Search />;
+            default: return null;
         }
     }
 

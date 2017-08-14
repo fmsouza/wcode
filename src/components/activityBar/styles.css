@@ -14,3 +14,7 @@
     margin-bottom: 16px;
     cursor: pointer;
 }
+
+.Toolbar .icon.active {
+    fill: white;
+}
