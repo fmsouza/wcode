@@ -15,7 +15,7 @@ export default class FileTree extends React.Component {
 
     onClickFile(file) {
         this.setState({ selectedFile: file.path });
-        console.log(file);
+        this.props.onSelectFile(file);
     }
 
     renderFileTree() {

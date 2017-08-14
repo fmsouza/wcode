@@ -11,6 +11,10 @@ export default class Explorer extends React.Component {
         this.setState({ project });
     }
 
+    onSelectFile(file) {
+        console.log(file);
+    }
+
     render() {
         const { project } = this.state;
         return (
@@ -21,6 +25,7 @@ export default class Explorer extends React.Component {
                 <FileTree
                     title={project.name}
                     directory={project.directory}
+                    onSelectFile={(file) => this.onSelectFile(file)}
                 />
             </div>
         );
