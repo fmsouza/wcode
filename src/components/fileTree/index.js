@@ -14,11 +14,8 @@ export default class FileTree extends React.Component {
     }
 
     onClickFile(file) {
-        // console.log(file);
-    }
-
-    onClickFolder(name, currentPath, folderObj) {
-        // console.log(arguments);
+        this.setState({ selectedFile: file.path });
+        console.log(file);
     }
 
     renderFileTree() {
@@ -28,7 +25,6 @@ export default class FileTree extends React.Component {
                 className="directory"
                 selectedFilePath={this.state.selectedFile}
                 fileClickHandler={(file) => this.onClickFile(file)}
-                folderClickHandler={(name, currentPath, folderObj) => this.onClickFolder(name, currentPath, folderObj)}
                 directory={directory}
                 fileTemplate={ItemFile}
                 folderTemplate={(props) => <ItemFolder {...props} />}

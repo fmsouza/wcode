@@ -34,6 +34,14 @@
     padding-left: 10px;
 }
 
+.FileTree .container > .directory .item:hover, .FileTree .container > .directory .subFolder:hover {
+    background-color: #2A2D2E;
+}
+
+.FileTree .container > .directory .item.active, .FileTree .container > .directory .item.active:hover {
+    background-color: #3F3F46;
+}
+
 .FileTree .container > .directory ul .subFolder {
     padding-left: 10px;
 }
@@ -50,8 +58,4 @@
     color: #CBCBCB;
     font-size: 12px;
     cursor: pointer;
-}
-
-.FileTree .container > .directory .itemFile:hover, .FileTree .container > .directory .itemFolder:hover {
-    background-color: #2A2D2E;
 }
