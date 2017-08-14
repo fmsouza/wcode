@@ -18,7 +18,7 @@ export default class Explorer extends React.Component {
                 <div className="title">
                     <span>Explorer</span>
                 </div>
-                <FileTree title={project.name} dir={project.dir} />
+                <FileTree title={project.name} directory={project.directory} />
             </div>
         );
     }

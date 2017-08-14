@@ -12,10 +12,40 @@
     cursor: pointer;
 }
 
-.FileTree .title .icon {
+.FileTree .title .icon, .FileTree .container > .directory .itemFolder .icon {
     fill: #e8e8e8;
 }
 
 .FileTree .title span {
     font-weight: bold !important;
+}
+
+.FileTree .container > .directory {
+    padding: 0;
+}
+
+.FileTree .container > .directory .item {
+}
+
+.FileTree .container > .directory, .FileTree .container > .directory * {
+    margin: 0;
+    list-style: none;
+}
+
+.FileTree .container > .directory .itemFile {
+    padding-left: 16px;
+}
+
+.FileTree .container > .directory .itemFile, .FileTree .container > .directory .itemFolder {
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #CBCBCB;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.FileTree .container > .directory .itemFile:hover, .FileTree .container > .directory .itemFolder:hover {
+    background-color: #2A2D2E;
 }

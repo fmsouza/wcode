@@ -21,7 +21,6 @@ export default class ActivityBar extends React.Component {
     isActive = (id) => (this.state.active === id) ? 'active' : '';
 
     render() {
-        const { onToolSelect, ...props } = this.props;
         return (
             <div className="Toolbar">
                 <Icon

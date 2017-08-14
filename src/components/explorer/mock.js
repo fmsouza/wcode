@@ -1,76 +1,55 @@
 export default {
     path: '/Users/myuser/workspace/',
     name: 'some-project-name',
-    dir: [
-        {
-            path: '/Users/myuser/workspace/some-project-name/node_modules',
-            extension: 'directory',
-            children: []
+    directory: {
+        '_contents': [
+            { name: '.gitignore', path: '.gitignore' },
+            { name: 'package-lock.json', path: 'package-lock.json' },
+            { name: 'package.json', path: 'package.json' },
+            { name: 'README.md', path: 'README.md' },
+            { name: 'yarn.lock', path: 'yarn.lock' }
+        ],
+        'node_modules' : {
+            '_contents': []
         },
-        {
-            path: '/Users/myuser/workspace/some-project-name/public',
-            extension: 'directory',
-            children: [
+        'public': {
+            '_contents': [
                 {
-                    path: '/Users/myuser/workspace/some-project-name/public/favicon.ico',
-                    extension: 'ico'
+                    name: 'favicon.ico',
+                    path: 'public/favicon.ico'
                 },
                 {
-                    path: '/Users/myuser/workspace/some-project-name/public/index.html',
-                    extension: 'html'
+                    name: 'index.html',
+                    path: 'public/index.html'
                 },
                 {
-                    path: '/Users/myuser/workspace/some-project-name/public/manifest.json',
-                    extension: 'json'
-                },
+                    name: 'manifest.json',
+                    path: 'public/manifest.json'
+                }
             ]
         },
-        {
-            path: '/Users/myuser/workspace/some-project-name/src',
-            extension: 'directory',
-            children: [
+        'src': {
+            'components': {
+                '_contents': []
+            },
+            '_contents': [
                 {
-                    path: '/Users/myuser/workspace/some-project-name/src/components',
-                    extension: 'directory',
-                    children: []
+                    name: 'App.css',
+                    path: 'src/App.css'
                 },
                 {
-                    path: '/Users/myuser/workspace/some-project-name/src/App.css',
-                    extension: 'css'
+                    name: 'App.js',
+                    path: 'src/App.js'
                 },
                 {
-                    path: '/Users/myuser/workspace/some-project-name/src/App.js',
-                    extension: 'js'
+                    name: 'App.test.js',
+                    path: 'src/App.test.js'
                 },
                 {
-                    path: '/Users/myuser/workspace/some-project-name/src/App.test.js',
-                    extension: 'js'
-                },
-                {
-                    path: '/Users/myuser/workspace/some-project-name/src/index.js',
-                    extension: 'js'
-                },
+                    name: 'index.js',
+                    path: 'src/index.js'
+                }
             ]
-        },
-        {
-            path: '/Users/myuser/workspace/some-project-name/.gitignore',
-            extension: 'gitignore'
-        },
-        {
-            path: '/Users/myuser/workspace/some-project-name/package-lock.json',
-            extension: 'json'
-        },
-        {
-            path: '/Users/myuser/workspace/some-project-name/package.json',
-            extension: 'json'
-        },
-        {
-            path: '/Users/myuser/workspace/some-project-name/README.md',
-            extension: 'md'
-        },
-        {
-            path: '/Users/myuser/workspace/some-project-name/yarn.lock',
-            extension: 'lock'
         }
-    ]
+    }
 };
