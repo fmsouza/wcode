@@ -4,7 +4,6 @@ import './styles.css';
 
 const TOOL_EXPLORER = 'explorer';
 const TOOL_SEARCH = 'search';
-const TOOL_SETTINGS = 'settings';
 
 export default class ActivityBar extends React.Component {
 
