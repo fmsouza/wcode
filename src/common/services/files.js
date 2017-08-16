@@ -1,4 +1,4 @@
-import { project } from 'common/stores';
+import { fileBuffer, project } from 'common/stores';
 import { api } from 'common/utils';
 
 export const loadProjectFiles = () => 
@@ -16,7 +16,7 @@ export const loadFile = (filePath) =>
     .then(() => api.get(`/files?src=${filePath}`))
     .then(({ data, status }) => {
         if (status === 200) {
-            console.log(data);
+            fileBuffer.addToBuffer(data);
         }
     })
     .then(() => project.isLoading(false));

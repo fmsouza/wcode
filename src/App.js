@@ -6,7 +6,6 @@ import Header from './components/header';
 import Sidebar from './components/sidebar';
 import StatusBar from './components/statusBar';
 import './App.css';
-import src from './mock';
 
 export default class App extends React.Component {
 
@@ -21,18 +20,6 @@ export default class App extends React.Component {
     componentWillMount() {
         window.addEventListener('resize', () => this.updateDimensions());
         this.updateDimensions();
-        setImmediate(() => {
-            this.refs.editor.view({
-                name: 'App.js',
-                language: 'javascript',
-                src
-            });
-            this.refs.editor.view({
-                name: 'App.test.js',
-                language: 'javascript',
-                src
-            });
-        });
     }
 
     componentWillUnmount() {
@@ -47,7 +34,7 @@ export default class App extends React.Component {
                     <Header />
                     <div className="body" style={{ width, height }}>
                         <Sidebar />
-                        <Editor ref="editor" />
+                        <Editor />
                     </div>
                     <StatusBar />
                 </div>

@@ -20,6 +20,8 @@ const readDir = (srcPath, folders = []) => {
 const readFile = (srcPath) => {
     if (!checkPath(srcPath).isFile()) throw new Error('The given path is not a file.');
     return {
+        name: srcPath.split('/').pop(),
+        path: srcPath,
         content: fs.readFileSync(srcPath).toLocaleString(),
         type: mime.lookup(srcPath)
     }

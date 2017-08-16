@@ -12,8 +12,8 @@ export default class Explorer extends React.Component {
         Action.loadProjectFiles();
     }
 
-    onSelectFile(file) {
-        console.log(file);
+    onClickNode(node) {
+        if (node.type) Action.loadFile(node);
     }
 
     render() {
@@ -26,8 +26,8 @@ export default class Explorer extends React.Component {
                 </div>
                 <FileTree
                     title={project.name}
-                    onSelectFile={(file) => this.onSelectFile(file)}
-                    directory={project.content}
+                    onClickNode={(node) => this.onClickNode(node)}
+                    content={project.content}
                 />
             </div>
         );

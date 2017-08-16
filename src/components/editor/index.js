@@ -1,16 +1,14 @@
 import React from 'react';
+import { inject, observer } from 'mobx-react';
 import FileTab from '../fileTab';
 import TextEditor from '../textEditor';
 import './styles.css';
 
+@inject('fileBuffer')
+@observer
 export default class Editor extends React.Component {
 
-    state = { files: [], selected: null, body: { width: 0, height: 0 } };
-
-    get selectedFile() {
-        const { files, selected } = this.state;
-        return selected && files[selected];
-    }
+    state = { body: { width: 0, height: 0 } };
 
     componentDidMount() {
         window.addEventListener('resize', () => this.updateDimensions());
@@ -24,23 +22,21 @@ export default class Editor extends React.Component {
         this.setState({ body: { width, height } });
     }
 
-    view(file) {
-        const { files } = this.state;
-        const selected = files.length;
-        files.push(file);
-        this.setState({ files, selected });
-    }
-
     renderOpenedFileTabs() {
-        const { files } = this.state;
-        if (files.length === 0) return null;
-        return files.map((file, key) => <FileTab key={key} file={file} />);
+        const { fileBuffer } = this.props;
+        return fileBuffer.fileStates.map((file, key) => <FileTab key={key} {...file} />);
     }
 
     renderEditorView() {
-        const file = this.selectedFile;
-        if (!file) return null;
-        return <TextEditor content={file.src} language={file.language} {...this.state.body} />;
+        const { fileBuffer: { activeFile, activeFilePath } } = this.props;
+        if (!activeFilePath) return null;
+        return (
+            <TextEditor
+                content={activeFile.content}
+                language={activeFile.type.split('/').pop()}
+                {...this.state.body}
+            />
+        );
     }
 
     render() {

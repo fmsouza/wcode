@@ -13,9 +13,8 @@ module.exports = class MainResource {
 		router.get('/', this.getFile.bind(this));
     }
     
-    respondSuccess(response, content, type = 'text/plain') {
-        response.setHeader('Content-Type', type);
-        response.status(200).send(content);
+    respondSuccess(response, content) {
+        response.status(200).jsonp(content);
     }
     
     respondError(response, message = 'error') {
@@ -25,13 +24,8 @@ module.exports = class MainResource {
 	getFile(request, response) {
         try {
             const { query } = url.parse(request.url, true);
-            if (!query.src) {
-                const content = readDir(loadedDir);
-                return this.respondSuccess(response, content, 'application/json');
-            } else {
-                const { content, type } = readFile(query.src);
-                return this.respondSuccess(response, content, type);
-            }
+            const content = (!query.src) ? readDir(loadedDir) : readFile(query.src);
+            return this.respondSuccess(response, content);
         } catch(e) {
             return this.respondError(response, e.messase);
         }
