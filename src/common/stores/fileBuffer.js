@@ -2,6 +2,11 @@ import { action, computed, observable } from 'mobx';
 
 let indexes = {};
 
+const updateIndexes = (files) => indexes = files.reduce((prev, next, i) => {
+    prev[next.path] = i;
+    return prev;
+}, {});
+
 class FileBufferStore {
     
     @observable loading = false;
@@ -36,8 +41,10 @@ class FileBufferStore {
     
     @action close(filePath) {
         if (this.activeFilePath === filePath) this.activeFilePath = '';
-        delete this.openedFiles[filePath];
+        const position = indexes[filePath];
+        this.openedFiles.splice(position, 1);
         delete indexes[filePath];
+        updateIndexes(this.openedFiles);
     }
 
     exists (filePath) {

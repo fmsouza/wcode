@@ -3,9 +3,12 @@
     width: 100px;
     height: inherit;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: #2D2D2D;
+    padding-left: 10px;
+    padding-right: 10px;
     border-right: 1px solid #1E1E1E;
 }
 
@@ -17,10 +20,21 @@
     background-color: #1E1E1E;
 }
 
-.FileTab span {
+.FileTab .title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.FileTab .title span {
     color: #969696;
     font-size: 12px;
     text-align: center;
+}
+
+.FileTab .icon {
+    fill: #C5C5C5;
 }
 
 .FileTab.active span {
