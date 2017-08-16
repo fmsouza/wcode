@@ -1,18 +1,20 @@
 {
   "name": "web-code",
   "version": "0.1.0",
-  "private": true,
+  "scripts": {
+    "start": "NODE_PATH=./src react-app-rewired start",
+    "server": "node server",
+    "build": "NODE_PATH=./src react-app-rewired build",
+    "test": "NODE_PATH=./src react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject"
+  },
   "dependencies": {
+    "axios": "0.16.2",
+    "express": "4.15.4",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-monaco-editor": "0.10.0",
     "react-nested-file-tree": "0.0.4"
-  },
-  "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-app-rewired eject"
   },
   "devDependencies": {
     "copy-webpack-plugin": "4.0.1",

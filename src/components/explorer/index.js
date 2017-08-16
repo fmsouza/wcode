@@ -2,6 +2,7 @@ import React from 'react';
 import FileTree from '../fileTree';
 import './styles.css';
 import project from './mock';
+import * as Action from 'common/actions';
 
 export default class Explorer extends React.Component {
 
@@ -9,6 +10,7 @@ export default class Explorer extends React.Component {
 
     componentWillMount() {
         this.setState({ project });
+        Action.loadProjectFiles();
     }
 
     onSelectFile(file) {
