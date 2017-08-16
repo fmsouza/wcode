@@ -13,7 +13,7 @@ export const loadProjectFiles = () =>
     .then(() => project.isLoading(false));
 
 export const loadFile = (filePath) => 
-    Promise.resolve(project.isLoading(true))
+    Promise.resolve(fileBuffer.isLoading(true))
     .then(() => api.get(`/files?src=${filePath}`))
     .then(({ data, status }) => {
         if (status === 200) {
@@ -21,4 +21,4 @@ export const loadFile = (filePath) =>
             Action.viewCode(data.path);
         }
     })
-    .then(() => project.isLoading(false));
+    .then(() => fileBuffer.isLoading(false));
