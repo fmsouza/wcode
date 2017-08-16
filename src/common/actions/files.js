@@ -7,4 +7,9 @@ export const loadProjectFiles = () => Services.loadProjectFiles();
 export const loadFile = ({ path }) => (fileBuffer.exists(path)) ?
     Action.viewCode(path) : Services.loadFile(path);
 
-export const closeFile = (filePath) => fileBuffer.close(filePath);
+export const closeFile = (filePath) => {
+    fileBuffer.close(filePath);
+    const lastOpenedFile = fileBuffer.lastOpenedFile();
+    if (lastOpenedFile) Action.viewCode(lastOpenedFile);
+    else Action.cleanCode();
+};

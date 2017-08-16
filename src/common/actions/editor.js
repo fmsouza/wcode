@@ -13,3 +13,5 @@ export const viewCode = (filePath) => {
     const { content, type } = fileBuffer.activeFile;
     editorHandler.loadCode(content, type.split('/').pop());
 }
+
+export const cleanCode = () => editorHandler.loadCode('', '');
