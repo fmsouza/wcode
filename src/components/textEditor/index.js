@@ -1,5 +1,5 @@
 import React from 'react';
-import MonacoEditor from 'react-monaco-editor';
+import MonacoEditor from 'react-monaco-editor'; // Reference: https://github.com/superRaytin/react-monaco-editor
 import './styles.css';
 
 export default class TextEditor extends React.Component {
@@ -8,6 +8,7 @@ export default class TextEditor extends React.Component {
 
     editor = null;
     
+    // Reference: https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditoroptions.html
     options = {
         minimap: { enabled: false },
         selectOnLineNumbers: true,
