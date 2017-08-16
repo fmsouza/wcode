@@ -1,4 +1,6 @@
 import React from 'react';
+import { Provider } from 'mobx-react';
+import * as stores from 'common/stores';
 import Editor from './components/editor';
 import Header from './components/header';
 import Sidebar from './components/sidebar';
@@ -40,14 +42,16 @@ export default class App extends React.Component {
     render() {
         const { body: { width, height } } = this.state;
         return (
-            <div className="App">
-                <Header />
-                <div className="body" style={{ width, height }}>
-                    <Sidebar />
-                    <Editor ref="editor" />
+            <Provider {...stores}>        
+                <div className="App">
+                    <Header />
+                    <div className="body" style={{ width, height }}>
+                        <Sidebar />
+                        <Editor ref="editor" />
+                    </div>
+                    <StatusBar />
                 </div>
-                <StatusBar />
-            </div>
+            </Provider>
         );
     }
 }

@@ -1,15 +1,15 @@
 import React from 'react';
+import { inject, observer } from 'mobx-react';
 import FileTree from '../fileTree';
 import './styles.css';
-import project from './mock';
+import projectMock from './mock';
 import * as Action from 'common/actions';
 
+@inject('project')
+@observer
 export default class Explorer extends React.Component {
 
-    state = { project: null };
-
     componentWillMount() {
-        this.setState({ project });
         Action.loadProjectFiles();
     }
 
@@ -18,7 +18,8 @@ export default class Explorer extends React.Component {
     }
 
     render() {
-        const { project } = this.state;
+        const { project } = this.props;
+        if (project.loading) return null;
         return (
             <div className="Explorer">
                 <div className="title">
@@ -26,8 +27,8 @@ export default class Explorer extends React.Component {
                 </div>
                 <FileTree
                     title={project.name}
-                    directory={project.directory}
                     onSelectFile={(file) => this.onSelectFile(file)}
+                    directory={projectMock.directory}
                 />
             </div>
         );
