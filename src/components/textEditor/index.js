@@ -15,7 +15,7 @@ export default class TextEditor extends React.Component {
     };
 
     get visible() {
-        return !(this.state.value && this.state.language);
+        return this.state.value && this.state.language;
     }
 
     editorDidMount(editor, monaco) {
@@ -31,7 +31,7 @@ export default class TextEditor extends React.Component {
 
     render() {
         return (
-            <div className="TextEditor">
+            <div className={`TextEditor ${this.visible && 'visible'}`}>
                 <MonacoEditor
                     {...this.state}
                     options={this.options}
