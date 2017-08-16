@@ -29,8 +29,7 @@ module.exports = class MainResource {
                 const content = readDir(loadedDir);
                 return this.respondSuccess(response, content, 'application/json');
             } else {
-                const path = loadedDir + '/' + query.src;
-                const { content, type } = readFile(path);
+                const { content, type } = readFile(query.src);
                 return this.respondSuccess(response, content, type);
             }
         } catch(e) {
