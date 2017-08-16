@@ -1,5 +1,4 @@
 import React from 'react';
-import NestedFileTreeView from 'react-nested-file-tree'; // Reference: https://github.com/woodpig07/react-nested-file-tree
 import Icon from '../icon';
 import ItemFile from './file';
 import ItemFolder from './folder';
@@ -21,14 +20,7 @@ export default class FileTree extends React.Component {
     renderFileTree() {
         const { directory } = this.props;
         return (this.state.collapsed) ? null : (
-            <NestedFileTreeView
-                className="directory"
-                selectedFilePath={this.state.selectedFile}
-                fileClickHandler={(file) => this.onClickFile(file)}
-                directory={directory}
-                fileTemplate={ItemFile}
-                folderTemplate={(props) => <ItemFolder {...props} />}
-            />
+            <div />
         );
     }
 

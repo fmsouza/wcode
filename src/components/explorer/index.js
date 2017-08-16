@@ -2,7 +2,6 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import FileTree from '../fileTree';
 import './styles.css';
-import projectMock from './mock';
 import * as Action from 'common/actions';
 
 @inject('project')
@@ -28,7 +27,7 @@ export default class Explorer extends React.Component {
                 <FileTree
                     title={project.name}
                     onSelectFile={(file) => this.onSelectFile(file)}
-                    directory={projectMock.directory}
+                    directory={project.content}
                 />
             </div>
         );
