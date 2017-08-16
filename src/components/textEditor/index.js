@@ -9,7 +9,7 @@ export default class TextEditor extends React.Component {
     editor = null;
     
     options = {
-        minimap: false,
+        minimap: { enabled: false },
         selectOnLineNumbers: true,
         theme: 'vs-dark'
     };
