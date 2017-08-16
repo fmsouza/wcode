@@ -6,21 +6,23 @@ import './styles.css';
 
 export default class FileTree extends React.Component {
 
-    state = { collapsed: false, selectedFile: null };
+    state = { collapsed: false };
 
     get iconName() {
         return (this.state.collapsed) ? 'chevron-right' : 'chevron-down';
     }
+    
+    renderFile = (item) => <ItemFile onClick={this.props.onClickNode} key={item.path} {...item} />;
+    
+    renderFolder = (item) => <ItemFolder onClick={this.props.onClickNode} key={item.path} {...item} />;
 
-    onClickFile(file) {
-        this.setState({ selectedFile: file.path });
-        this.props.onSelectFile(file);
-    }
-
-    renderFileTree() {
-        const { directory } = this.props;
-        return (this.state.collapsed) ? null : (
-            <div />
+    renderFileTree(collapsed) {
+        if (collapsed) return null;
+        const { content: { files, folders } } = this.props;
+        return (
+            <div className="subnodes">
+                {[].concat(folders.map(this.renderFolder)).concat(files.map(this.renderFile))}
+            </div>
         );
     }
 
@@ -28,13 +30,11 @@ export default class FileTree extends React.Component {
         const { title } = this.props;
         return (
             <div className="FileTree">
-                <div className="title" onClick={() => this.setState({ collapsed: !this.state.collapsed })}>
+                <div className="rootTitle title" onClick={() => this.setState({ collapsed: !this.state.collapsed })}>
                     <Icon name={this.iconName} className="icon" />
-                    <span>{title}</span>
+                    {title}
                 </div>
-                <div className="container">
-                    {this.renderFileTree()}
-                </div>
+                {this.renderFileTree(this.state.collapsed)}
             </div>
         );
     }

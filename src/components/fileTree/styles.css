@@ -1,56 +1,52 @@
 .FileTree {
-    
+    display: flex;
+    flex-direction: column;
 }
 
-.FileTree > .title {
+.FileTree .title {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #383838;
-    height: 20px;
-    padding-left: 4px;
-    cursor: pointer;
 }
 
-.FileTree .title .icon, .FileTree .container > .directory .itemFolder .icon {
+.FileTree .title .icon {
     fill: #e8e8e8;
 }
 
-.FileTree .title span {
-    font-weight: bold !important;
+.FileTree .rootTitle {
+    background-color: #383838;
+    color: #CCCCCC;
+    height: 20px;
+    padding-left: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
 }
 
-.FileTree .container {
-    overflow-y: auto;
+.FileTree .node {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 13px;
 }
 
-.FileTree .container > .directory, .FileTree .container > .directory * {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.FileTree .node .title {
+    font-size: 13px;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
-.FileTree .container > .directory ul .item {
-    padding-left: 10px;
-}
-
-.FileTree .container > .directory .item:hover, .FileTree .container > .directory .subFolder:hover {
+.FileTree .node:hover {
     background-color: #2A2D2E;
 }
 
-.FileTree .container > .directory .item.active, .FileTree .container > .directory .item.active:hover {
+.FileTree .node.active, .FileTree .node.active:hover {
     background-color: #094771;
 }
 
-.FileTree .container > .directory ul .subFolder {
-    padding-left: 10px;
-}
-
-.FileTree .container > .directory .itemFile {
-    padding-left: 16px;
-}
-
-.FileTree .container > .directory .itemFile, .FileTree .container > .directory .itemFolder {
+.ItemFile, .ItemFolder {
     height: 20px;
     display: flex;
     flex-direction: row;
