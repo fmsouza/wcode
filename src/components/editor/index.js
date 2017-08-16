@@ -1,5 +1,6 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
+import * as Action from 'common/actions';
 import FileTab from '../fileTab';
 import TextEditor from '../textEditor';
 import './styles.css';
@@ -22,21 +23,13 @@ export default class Editor extends React.Component {
         this.setState({ body: { width, height } });
     }
 
-    renderOpenedFileTabs() {
-        const { fileBuffer } = this.props;
-        return fileBuffer.fileStates.map((file, key) => <FileTab key={key} {...file} />);
+    onClickTab = (item) => {
+        Action.viewCode(item.path);
     }
 
-    renderEditorView() {
-        const { fileBuffer: { activeFile, activeFilePath } } = this.props;
-        if (!activeFilePath) return null;
-        return (
-            <TextEditor
-                content={activeFile.content}
-                language={activeFile.type.split('/').pop()}
-                {...this.state.body}
-            />
-        );
+    renderOpenedFileTabs() {
+        const { fileBuffer } = this.props;
+        return fileBuffer.fileStates.map((file, key) => <FileTab key={key} {...file} onClick={this.onClickTab} />);
     }
 
     render() {
@@ -46,7 +39,7 @@ export default class Editor extends React.Component {
                     {this.renderOpenedFileTabs()}
                 </div>
                 <div className="editorView" style={this.state.body}>
-                    {this.renderEditorView()}
+                    <TextEditor ref={Action.setEditorHandler} />
                 </div>
             </div>
         );

@@ -4,7 +4,7 @@ import './styles.css';
 
 export default class TextEditor extends React.Component {
 
-    state = { code: '' };
+    state = { value: '', language: '' };
     
     options = {
         minimap: false,
@@ -12,27 +12,26 @@ export default class TextEditor extends React.Component {
         theme: 'vs-dark'
     };
 
-    componentWillMount() {
-        const { content } = this.props;
-        this.setState({ code: content });
-    }
-
     editorDidMount(editor, monaco) {
         editor.focus();
     }
+
+    loadCode(value, language) {
+        this.setState({ value, language });
+    }
     
-    onChange(code, e) {
-        this.setState({ code });
+    onChange(value, e) {
+        this.setState({ value });
     }
 
     render() {
+        if (!this.state.value && !this.state.language) return null;
         return (
             <div className="TextEditor">
                 <MonacoEditor
-                    {...this.props}
-                    value={this.state.code}
+                    {...this.state}
                     options={this.options}
-                    onChange={(newValue, e) => this.onChange(newValue, e)}
+                    onChange={(newValue, e) => this.props.onChange(newValue, e)}
                     editorDidMount={(editor, monaco) => this.editorDidMount(editor, monaco)}
                 />
             </div>

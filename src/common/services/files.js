@@ -1,3 +1,4 @@
+import * as Action from 'common/actions';
 import { fileBuffer, project } from 'common/stores';
 import { api } from 'common/utils';
 
@@ -17,6 +18,7 @@ export const loadFile = (filePath) =>
     .then(({ data, status }) => {
         if (status === 200) {
             fileBuffer.addToBuffer(data);
+            Action.viewCode(data.path);
         }
     })
     .then(() => project.isLoading(false));

@@ -16,13 +16,17 @@ class FileBufferStore {
     }
 
     @computed get fileStates() {
-        return this.openedFiles.map(({ name, path }) => ({ name, active: path === this.activeFilePath }));
+        return this.openedFiles.map(({ name, path }) => ({ name, path, active: path === this.activeFilePath }));
     }
 
     @action isLoading(state) {
         this.loading = Boolean(state);
     }
-
+    
+    @action selectFile(filePath) {
+        this.activeFilePath = filePath;
+    }
+    
     @action addToBuffer(file) {
         const position = this.openedFiles.length;
         this.openedFiles.push(file);
