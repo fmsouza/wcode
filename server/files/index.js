@@ -13,39 +13,28 @@ module.exports = class MainResource {
 		router.get('/', this.getFile.bind(this));
     }
     
-    respondSuccess(response, content) {
-        const res = response.status(200);
-        if (typeof content === 'string') res.send(content);
-        else res.jsonp(content);
+    respondSuccess(response, content, type = 'text/plain') {
+        response.setHeader('Content-Type', type);
+        response.status(200).send(content);
     }
     
-    respondError(response) {
-        response.status(404).send('error');
+    respondError(response, message = 'error') {
+        response.status(404).send(message);
     }
 
 	getFile(request, response) {
         try {
             const { query } = url.parse(request.url, true);
             if (!query.src) {
-                const stat = checkPath(loadedDir);
-                if (stat.isDirectory()) {
-                    const content = readDir(loadedDir);
-                    return this.respondSuccess(response, content);
-                }
-                throw new Error('Error');
+                const content = readDir(loadedDir);
+                return this.respondSuccess(response, content, 'application/json');
             } else {
-                const stat = checkPath(loadedDir + '/' + query.src);
-                if (stat.isDirectory()) {
-                    const content = readDir(loadedDir + '/' + query.src);
-                    return this.respondSuccess(response, content);
-                } else if (stat.isFile()) {
-                    const content = readFile(loadedDir + '/' + query.src);
-                    return this.respondSuccess(response, content);
-                }
-                throw new Error('Error');
+                const path = loadedDir + '/' + query.src;
+                const { content, type } = readFile(path);
+                return this.respondSuccess(response, content, type);
             }
         } catch(e) {
-            return this.respondError(response);
+            return this.respondError(response, e.messase);
         }
 	}
 }

@@ -1,11 +1,27 @@
 const fs = require('fs');
+const mime = require('mime');
 
-module.exports = {
+const checkPath = (srcPath) => fs.lstatSync(srcPath);
 
-    checkPath: (path) => fs.lstatSync(path),
+const readDir = (srcPath) => {
+    if (!checkPath(srcPath).isDirectory()) throw new Error('The given path is not a directory.');
+    const directory = fs.readdirSync(srcPath);
+    const folders = [], files = [];
+    directory.forEach(name => {
+        const path = `${srcPath}/${name}`;
+        const stat = checkPath(path);
+        if (stat.isFile()) files.push({ name, path, type: mime.lookup(path) });
+        else if (stat.isDirectory()) folders.push({ name, path, children: readDir(path) });
+    });
+    return folders.concat(files);
+}
 
-    readDir: (path) => fs.readdirSync(path),
+const readFile = (srcPath) => {
+    if (!checkPath(srcPath).isFile()) throw new Error('The given path is not a file.');
+    return {
+        content: fs.readFileSync(srcPath).toLocaleString(),
+        type: mime.lookup(srcPath)
+    }
+}
 
-    readFile: (path) => fs.readFileSync(path).toLocaleString(),
-    
-};
+module.exports = { readDir, readFile };
