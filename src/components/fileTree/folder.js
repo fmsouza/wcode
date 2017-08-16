@@ -20,26 +20,24 @@ export default class ItemFolder extends React.Component {
     
     renderFolder = (item) => <ItemFolder onClick={this.props.onClick} key={item.path} {...item} />;
 
-    renderSubNodes() {
-        if (this.state.collapsed) return null;
-        const { files, folders } = this.props;
-        return (
-            <div className="subnodes">
-                {[].concat(folders.map(this.renderFolder)).concat(files.map(this.renderFile))}
-            </div>
-        );
-    }
+    renderSubNodes = (files, folders) => (
+        <div className="subnodes">
+            {[].concat(folders.map(this.renderFolder)).concat(files.map(this.renderFile))}
+        </div>
+    );
 
     render() {
-        const { name } = this.props;
+        const { name, files, folders } = this.props;
         const { collapsed } = this.state;
         return (
-            <div className="ItemFolder node">
-                <div className="title" onClick={() => this.onClick()}>
-                    <Icon name={this.iconName} className="icon" />
-                    {name}
+            <div className="ItemFolder">
+                <div className="node" onClick={() => this.onClick()}>
+                    <div className="title">
+                        <Icon name={this.iconName} className="icon" />
+                        {name}
+                    </div>
                 </div>
-                {this.renderSubNodes(collapsed)}
+                {!collapsed && this.renderSubNodes(files, folders)}
             </div>
         );
     }

@@ -25,17 +25,17 @@
 }
 
 .FileTree .node {
-    height: auto;
+    height: 22px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 13px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: #CBCBCB;
+    cursor: pointer;
 }
 
 .FileTree .node .title {
     font-size: 13px;
-    padding-top: 3px;
-    padding-bottom: 3px;
 }
 
 .FileTree .node:hover {
@@ -46,12 +46,6 @@
     background-color: #094771;
 }
 
-.ItemFile, .ItemFolder {
-    height: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: #CBCBCB;
-    font-size: 12px;
-    cursor: pointer;
+.FileTree .subnodes:not(.no-padding), .FileTree .subnodes .node {
+    padding-left: 13px;
 }
