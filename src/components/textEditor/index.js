@@ -28,12 +28,6 @@ export default class TextEditor extends React.Component {
         this.setState({ value, language });
         this.editor.layout(body);
     }
-    
-    onChange(value, e) {
-        this.setState({ value }, () => {
-            this.props.onChange && this.props.onChange(value, e);
-        });
-    }
 
     render() {
         return (
@@ -41,7 +35,7 @@ export default class TextEditor extends React.Component {
                 <MonacoEditor
                     {...this.state}
                     options={this.options}
-                    onChange={(newValue, e) => this.onChange(newValue, e)}
+                    onChange={(value) => this.setState({ value })}
                     editorDidMount={(editor, monaco) => this.editorDidMount(editor, monaco)}
                 />
             </div>
