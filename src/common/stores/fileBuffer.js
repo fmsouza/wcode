@@ -11,9 +11,11 @@ class FileBufferStore {
     
     @observable loading = false;
     
-    @observable activeFilePath = '';
-    
     @observable openedFiles = [];
+    
+    @observable activeFilePath = '';
+
+    previousFilePaths = [];
 
     @computed get activeFile() {
         const position = indexes[this.activeFilePath];
@@ -29,18 +31,21 @@ class FileBufferStore {
     }
     
     @action selectFile(filePath) {
+        this.previousFilePaths.push(this.activeFilePath);
         this.activeFilePath = filePath;
     }
     
     @action addToBuffer(file) {
         const position = this.openedFiles.length;
         this.openedFiles.push(file);
+        this.previousFilePaths.push(this.activeFilePath);
         this.activeFilePath = file.path;
         indexes[file.path] = position;
     }
     
     @action close(filePath) {
-        if (this.activeFilePath === filePath) this.activeFilePath = '';
+        this.previousFilePaths = this.previousFilePaths.filter(item => item !== filePath);
+        if (this.activeFilePath === filePath) this.activeFilePath = this.previousFilePaths.pop();
         const position = indexes[filePath];
         this.openedFiles.splice(position, 1);
         delete indexes[filePath];
