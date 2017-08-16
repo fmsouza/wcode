@@ -1,15 +1,28 @@
 .FileTab {
     cursor: pointer;
-    background-color: #1E1E1E;
     width: 100px;
     height: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #2D2D2D;
+    border-right: 1px solid #1E1E1E;
+}
+
+.FileTab:last-child {
+    border: none;
+}
+
+.FileTab.active {
+    background-color: #1E1E1E;
 }
 
 .FileTab span {
-    color: white;
+    color: #969696;
     font-size: 12px;
     text-align: center;
+}
+
+.FileTab.active span {
+    color: white;
 }
