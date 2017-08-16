@@ -14,6 +14,10 @@ export default class TextEditor extends React.Component {
         theme: 'vs-dark'
     };
 
+    get visible() {
+        return !(this.state.value && this.state.language);
+    }
+
     editorDidMount(editor, monaco) {
         editor.focus();
         this.editor = editor;
@@ -26,7 +30,9 @@ export default class TextEditor extends React.Component {
     }
     
     onChange(value, e) {
-        this.setState({ value });
+        this.setState({ value }, () => {
+            this.props.onChange && this.props.onChange(value, e);
+        });
     }
 
     render() {
@@ -35,7 +41,7 @@ export default class TextEditor extends React.Component {
                 <MonacoEditor
                     {...this.state}
                     options={this.options}
-                    onChange={(newValue, e) => this.props.onChange(newValue, e)}
+                    onChange={(newValue, e) => this.onChange(newValue, e)}
                     editorDidMount={(editor, monaco) => this.editorDidMount(editor, monaco)}
                 />
             </div>

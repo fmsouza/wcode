@@ -40,5 +40,9 @@ class FileBufferStore {
         delete indexes[filePath];
     }
 
+    exists (filePath) {
+        return !isNaN(indexes[filePath]);
+    }
+
 }
 export default new FileBufferStore();
