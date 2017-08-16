@@ -4,7 +4,9 @@ import './styles.css';
 
 export default class TextEditor extends React.Component {
 
-    state = { value: '', language: '' };
+    state = { value: '', language: '', editor: null };
+
+    editor = null;
     
     options = {
         minimap: false,
@@ -14,10 +16,13 @@ export default class TextEditor extends React.Component {
 
     editorDidMount(editor, monaco) {
         editor.focus();
+        this.editor = editor;
     }
 
     loadCode(value, language) {
+        const { body } = this.props;
         this.setState({ value, language });
+        this.editor.layout(body);
     }
     
     onChange(value, e) {
@@ -25,7 +30,6 @@ export default class TextEditor extends React.Component {
     }
 
     render() {
-        if (!this.state.value && !this.state.language) return null;
         return (
             <div className="TextEditor">
                 <MonacoEditor
