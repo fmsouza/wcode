@@ -39,7 +39,6 @@ class FileBufferStore {
         const position = this.openedFiles.length;
         this.openedFiles.push(file);
         indexes[file.path] = position;
-        this.selectFile(file.path);
     }
     
     @action close(filePath) {
@@ -57,6 +56,12 @@ class FileBufferStore {
 
     lastOpenedFile() {
         return this.previousFilePaths.pop();
+    }
+
+    updateCode(filePath, code) {
+        const position = indexes[filePath];
+        this.openedFiles[position].content = code;
+
     }
 
 }
