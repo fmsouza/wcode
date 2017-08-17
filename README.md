@@ -6,6 +6,8 @@ It was born on a particular necessity of using such software on any kind of plat
 
 Currently it still in _alpha stage_, so expect lots and lots of bugs. It is not ready for use it. It's still more like a _proof of concept_, actually.
 
+![screenshot](./assets/screenshot.png)
+
 ## 1. Installation
 
 ```bash
@@ -15,13 +17,13 @@ $ cd monaco-web-ide && npm install
 
 ## 2. Running
 
-#### `npm run dev`
+#### `npm run server`
 
-Runs the Express server in http://localhost:8080, which works as a bridge between the web application and the SO to allow you to modify your files.
+Runs the Express server in http://localhost:8080, which works as a bridge between the web application and the Operating System to allow you to modify your files.
 
 #### `npm start`
 
-Runs the React application in the server address http://localhost:3000
+Runs the web application in the server address http://localhost:3000
 
 ## 3. Contributing
 

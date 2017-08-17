@@ -1,6 +1,18 @@
 {
   "name": "monaco-web-ide",
   "version": "0.1.0",
+  "description": "A rich code editor which runs inside a browser.",
+  "main": "server/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fmsouza/monaco-web-ide.git"
+  },
+  "engines": {
+    "node": ">=6",
+    "npm": ">=3"
+  },
+  "author": "Frederico Souza (fredericoamsouza@gmail.com)",
+  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "start": "NODE_PATH=./src react-app-rewired start",
     "server": "node server .",
