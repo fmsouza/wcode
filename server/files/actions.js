@@ -22,7 +22,7 @@ const readFile = (srcPath) => {
     return {
         name: srcPath.split('/').pop(),
         path: srcPath,
-        content: fs.readFileSync(srcPath).toLocaleString(),
+        content: fs.readFileSync(srcPath).toString('utf-8'),
         type: mime.lookup(srcPath)
     }
 }
