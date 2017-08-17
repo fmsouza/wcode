@@ -22,6 +22,7 @@
     font-weight: 600;
     font-size: 11px;
     text-transform: uppercase;
+    box-shadow: 1px 1px 3px black;
 }
 
 .FileTree .node {
