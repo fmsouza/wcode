@@ -1,7 +1,10 @@
 import React from 'react';
+import { inject, observer } from 'mobx-react';
 import Icon from '../icon';
 import ItemFile from './file';
 
+@inject('fileBuffer')
+@observer
 export default class ItemFolder extends React.Component {
 
     state = { collapsed: true };
@@ -16,7 +19,14 @@ export default class ItemFolder extends React.Component {
         this.setState({ collapsed }, () => onClick({ name, path, collapsed }));
     }
     
-    renderFile = (item) => <ItemFile onClick={this.props.onClick} key={item.path} {...item} />;
+    renderFile = (item) => (
+        <ItemFile
+            {...item}
+            key={item.path}
+            selected={item.path === this.props.fileBuffer.activeFilePath}
+            onClick={this.props.onClick}
+        />
+    );
     
     renderFolder = (item) => <ItemFolder onClick={this.props.onClick} key={item.path} {...item} />;
 
