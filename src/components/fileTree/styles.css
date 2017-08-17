@@ -56,3 +56,7 @@
 .FileTree .subnodes:not(.no-padding), .FileTree .subnodes .node {
     padding-left: 13px;
 }
+
+.FileTree .ItemFile .node {
+    padding-left: 28px;
+}
