@@ -29,15 +29,18 @@ export default class Editor extends React.Component {
 
     renderOpenedFileTabs() {
         const { fileBuffer } = this.props;
-        return fileBuffer.fileStates.map((file, key) => <FileTab key={key} {...file} onClick={this.onClickTab} />);
+        if (fileBuffer.fileStates.length === 0) return null;
+        return (
+            <div className="editorTabs">
+                {fileBuffer.fileStates.map((file, key) => <FileTab key={key} {...file} onClick={this.onClickTab} />)}
+            </div>
+        );
     }
 
     render() {
         return (
             <div className="Editor" ref="editor">
-                <div className="editorTabs">
-                    {this.renderOpenedFileTabs()}
-                </div>
+                {this.renderOpenedFileTabs()}
                 <div className="editorView">
                     <TextEditor ref={Action.setEditorHandler} {...this.state} />
                 </div>
