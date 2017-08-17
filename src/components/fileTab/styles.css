@@ -21,22 +21,18 @@
 }
 
 .FileTab .title {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-}
-
-.FileTab .title span {
     color: #969696;
     font-size: 12px;
-    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .FileTab .icon {
+    margin-left: 5px;
     fill: #C5C5C5;
 }
 
-.FileTab.active span {
+.FileTab.active .title {
     color: white;
 }
