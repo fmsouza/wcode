@@ -1,12 +1,13 @@
 .Header {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     background-color: #007ACC;
     color: white;
     height: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     font-size: 12px;
 
 }
@@ -16,6 +17,53 @@
     color: white;
 }
 
-.Header .title {
+.Header .name {
     font-weight: bold;
+}
+
+.Header .side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Header .side > .item {
+    margin: 10px;
+}
+
+.Menu > span {
+    margin: 5px;
+}
+
+.Menu .menuItem .submenu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 20px;
+    min-width: 120px;
+    z-index: 999;
+    background-color: #2D2F31;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    box-shadow: 0 3px 10px black;
+}
+
+.Menu .menuItem .submenu div.item {
+    color: #BBBBBB;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3px 10px;
+}
+
+.Menu .menuItem .submenu div.item:hover {
+    background-color: #3A3A3A;
+}
+
+.Menu .menuItem .submenu div.separator {
+    margin: 5px auto 5px auto;
+    width: 85%;
+    height: 1px;
+    background-color: #444546;
 }

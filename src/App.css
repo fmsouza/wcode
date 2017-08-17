@@ -16,3 +16,7 @@ body {
     display: flex;
     flex-direction: row;
 }
+
+.clickable {
+    cursor: pointer;
+}
