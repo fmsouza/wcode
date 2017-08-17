@@ -39,7 +39,7 @@
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 20px;
+    top: 22px;
     min-width: 120px;
     z-index: 100;
     background-color: #2D2F31;
