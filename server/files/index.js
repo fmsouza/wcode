@@ -10,7 +10,7 @@ module.exports = class MainResource {
     }
 
 	constructor(router) {
-		router.get('/', this.getFile.bind(this));
+		router.get('/', this.getFiles.bind(this));
 		router.put('/', this.updateFile.bind(this));
     }
     
@@ -22,10 +22,13 @@ module.exports = class MainResource {
         response.status(status).send(message);
     }
 
-	getFile(request, response) {
+	getFiles(request, response) {
         try {
             const { query } = url.parse(request.url, true);
-            const content = (!query.src) ? readDir(loadedDir) : readFile(query.src);
+            let content = null;
+            if (!loadedDir) throw new Error('Project path not specified.');
+            else if (!query.src) content = readDir(loadedDir);
+            else content = readFile(query.src);
             return this.respondSuccess(response, content);
         } catch(e) {
             return this.respondError(response, e.messase);

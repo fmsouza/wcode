@@ -16,19 +16,26 @@ export default class Explorer extends React.Component {
         if (node.type) Action.loadFile(node);
     }
 
-    render() {
+    renderFileTree() {
         const { project } = this.props;
-        if (project.loading) return null;
+        if (project.loading || !project.name) return null;
+        return (
+            <FileTree
+                title={project.name}
+                onClickNode={(node) => this.onClickNode(node)}
+                content={project.content}
+            />
+        );
+
+    }
+
+    render() {
         return (
             <div className="Explorer">
                 <div className="title">
                     <span>Explorer</span>
                 </div>
-                <FileTree
-                    title={project.name}
-                    onClickNode={(node) => this.onClickNode(node)}
-                    content={project.content}
-                />
+                {this.renderFileTree()}
             </div>
         );
     }
