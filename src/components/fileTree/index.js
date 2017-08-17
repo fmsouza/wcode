@@ -1,12 +1,9 @@
 import React from 'react';
-import { inject, observer } from 'mobx-react';
 import Icon from '../icon';
 import ItemFile from './file';
 import ItemFolder from './folder';
 import './styles.css';
 
-@inject('fileBuffer')
-@observer
 export default class FileTree extends React.Component {
 
     state = { collapsed: false };
@@ -15,14 +12,7 @@ export default class FileTree extends React.Component {
         return (this.state.collapsed) ? 'chevron-right' : 'chevron-down';
     }
     
-    renderFile = (item) => (
-        <ItemFile
-            {...item}
-            key={item.path}
-            selected={item.path === this.props.fileBuffer.activeFilePath}
-            onClick={this.props.onClickNode}
-        />
-    );
+    renderFile = (item) => <ItemFile {...item} key={item.path} onClick={this.props.onClickNode} />;
     
     renderFolder = (item) => <ItemFolder onClick={this.props.onClickNode} key={item.path} {...item} />;
 

@@ -1,9 +1,23 @@
 import React from 'react';
+import { inject, observer } from 'mobx-react';
 
-export default ({ name, path, onClick, selected, type }) => (
-    <div className="ItemFile">
-        <div className={`node ${selected && 'active'}`}  onClick={() => onClick({ name, path, type })}>
-            <div className="title">{name}</div>
-        </div>
-    </div>
-);
+@inject('fileBuffer')
+@observer
+export default class ItemFile extends React.Component {
+
+    get selected() {
+        const { fileBuffer, path } = this.props;
+        return fileBuffer.activeFilePath === path;
+    }
+
+    render() {
+        const { name, path, onClick, type } = this.props;
+        return (
+            <div className="ItemFile">
+                <div className={`node ${this.selected && 'active'}`}  onClick={() => onClick({ name, path, type })}>
+                    <div className="title">{name}</div>
+                </div>
+            </div>
+        );
+    }
+}
