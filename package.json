@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "start": "NODE_PATH=./src react-app-rewired start",
-    "server": "node server",
+    "server": "node server .",
     "build": "NODE_PATH=./src react-app-rewired build",
     "test": "NODE_PATH=./src react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject"
