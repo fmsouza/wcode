@@ -4,7 +4,7 @@ Monaco Web IDE is a rich code editor which runs inside a browser. It's totally i
 
 It was born on a particular necessity of using such software on any kind of platforms, which is not the case of VSCode (only runs in x64 Desktop OSes), by taking inspiration on [this article](https://medium.com/samsung-internet-dev/writing-software-using-a-phone-e71976f1f18d) to produce some alternative kind of software to run in platforms like Android, Raspberry PI, etc.
 
-Currently it still in _alpha stage_, so expect lots and lots of bugs. It is not ready for use it. It's still more like a _proof of concept_, actually.
+Currently it still in _alpha stage_, so expect lots and lots of bugs. It is not ready for use yet. It's still more like a _proof of concept_, actually.
 
 ![screenshot](./assets/screenshot.png)
 
