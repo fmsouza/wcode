@@ -5,7 +5,7 @@
 }
 
 .Editor .editorTabs {
-    height: 32px;
+    height: 36px;
     width: inherit;
     display: flex;
     flex-direction: row;

@@ -19,7 +19,7 @@ export default class Editor extends React.Component {
     updateDimensions() {
         const { clientHeight, clientWidth } = this.refs.editor;
         const width = clientWidth;
-        const height = clientHeight - 32;
+        const height = clientHeight - 36;
         this.setState({ body: { width, height } });
     }
 

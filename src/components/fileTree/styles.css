@@ -29,6 +29,7 @@
 .FileTree .rootContent {
     height: inherit;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .FileTree .node {
@@ -43,6 +44,7 @@
 
 .FileTree .node .title {
     font-size: 13px;
+    white-space: nowrap;
 }
 
 .FileTree .node:hover {
@@ -54,8 +56,8 @@
 }
 
 .FileTree .subnodes:not(.no-padding), .FileTree .subnodes .node {
-    padding-left: 13px;
-    width: max-content;
+    padding-left: 14px;
+    width: auto;
 }
 
 .FileTree .ItemFile .node {
