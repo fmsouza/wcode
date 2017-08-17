@@ -38,7 +38,7 @@ export default class Editor extends React.Component {
                 <div className="editorTabs">
                     {this.renderOpenedFileTabs()}
                 </div>
-                <div className="editorView" style={this.state.body}>
+                <div className="editorView">
                     <TextEditor ref={Action.setEditorHandler} {...this.state} />
                 </div>
             </div>

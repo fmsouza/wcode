@@ -10,12 +10,16 @@ import './App.css';
 @observer
 export default class App extends React.Component {
 
+    get style() {
+        const { view: { width, height } } = this.props;
+        return { width, height: (height - 40) };
+    }
+
     render() {
-        const { view } = this.props;
         return (
             <div className="App">
                 <Header />
-                <div className="body" style={view}>
+                <div className="body" style={this.style}>
                     <Sidebar />
                     <Editor />
                 </div>

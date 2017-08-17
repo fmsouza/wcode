@@ -2,11 +2,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #007ACC;
+    background-color: #252526;
     color: white;
     height: 20px;
     padding-left: 5px;
     padding-right: 5px;
+    box-shadow: 0 0 3px black;
+    z-index: 999;
 }
 
 .StatusBar a, .StatusBar span {
