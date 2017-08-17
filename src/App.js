@@ -12,7 +12,7 @@ export default class App extends React.Component {
 
     get style() {
         const { view: { width, height } } = this.props;
-        return { width, height: (height - 40) };
+        return { width, height: (height - 44) };
     }
 
     render() {

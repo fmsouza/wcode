@@ -3,9 +3,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 48px;
-    padding-top: 16px;
+    width: 50px;
+    padding-top: 14px;
     background-color: #333333;
+    z-index: 300;
 }
 
 .Toolbar > div {
@@ -17,7 +18,7 @@
     fill: #ADADAD;
     width: 32px;
     height: 32px;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     cursor: pointer;
 }
 
