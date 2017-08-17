@@ -1,6 +1,7 @@
 .FileTree {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .FileTree .title {
@@ -23,6 +24,11 @@
     font-size: 11px;
     text-transform: uppercase;
     box-shadow: 1px 1px 3px black;
+}
+
+.FileTree .rootContent {
+    height: inherit;
+    overflow-y: auto;
 }
 
 .FileTree .node {

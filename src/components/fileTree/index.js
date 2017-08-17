@@ -30,7 +30,7 @@ export default class FileTree extends React.Component {
         if (collapsed) return null;
         const { content: { files, folders } } = this.props;
         return (
-            <div className="subnodes no-padding">
+            <div className="rootContent subnodes no-padding">
                 {[].concat(folders.map(this.renderFolder)).concat(files.map(this.renderFile))}
             </div>
         );
