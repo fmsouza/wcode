@@ -19,10 +19,11 @@ export const closeCurrentFile = () => {
     closeFile(currentFilePath);
 };
 
+export const closeAllFiles = () => fileBuffer.fileStates.map(({ path }) => closeFile(path));
+
 // TODO: Implement file creation
 export const newFile = () => {};
 
-// TODO: Implement file save
 export const saveFile = () => {
     const activeFile = fileBuffer.activeFile;
     if (!activeFile) return;
@@ -30,5 +31,4 @@ export const saveFile = () => {
     Services.saveFile({ ...activeFile, content });
 };
 
-// TODO: Implement save all files
-export const saveAllFiles = () => {};
+export const saveAllFiles = () => fileBuffer.openedFiles.map(file => saveFile(file));
