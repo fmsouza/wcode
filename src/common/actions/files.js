@@ -25,6 +25,7 @@ export const newFile = () => {};
 // TODO: Implement file save
 export const saveFile = () => {
     const activeFile = fileBuffer.activeFile;
+    if (!activeFile) return;
     const content = Action.getCode();
     Services.saveFile({ ...activeFile, content });
 };

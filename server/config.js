@@ -4,7 +4,6 @@
  * Application configuration
  * You may use it to describe every global configuration data
  */
-
 module.exports = {
     loadedDir: __dirname,
     server: {
