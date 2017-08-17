@@ -22,3 +22,13 @@ export const loadFile = (filePath) =>
         }
     })
     .then(() => fileBuffer.isLoading(false));
+
+export const saveFile = (file) => 
+    Promise.resolve(fileBuffer.isLoading(true))
+    .then(() => api.put(`/files?src=${file.path}`, file))
+    .then(({ data, status }) => {
+        if (status === 201) {
+            console.log(file.name, "saved successfully.");
+        }
+    })
+    .then(() => fileBuffer.isLoading(false));

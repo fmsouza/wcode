@@ -27,4 +27,9 @@ const readFile = (srcPath) => {
     }
 }
 
-module.exports = { readDir, readFile };
+const saveFile = (srcPath, content) => {
+    if (!checkPath(srcPath).isFile()) throw new Error('The given path is not a file.');
+    fs.writeFileSync(srcPath, content);
+};
+
+module.exports = { readDir, readFile, saveFile };

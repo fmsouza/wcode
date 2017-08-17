@@ -1,5 +1,5 @@
 'use strict';
-/* global __dirname, process; */
+/* global __dirname; */
 /**
  * Application configuration
  * You may use it to describe every global configuration data

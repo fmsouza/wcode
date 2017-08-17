@@ -19,6 +19,10 @@ export default class TextEditor extends React.Component {
         return this.state.value && this.state.language;
     }
 
+    get code() {
+        return this.state.value;
+    }
+
     editorDidMount(editor, monaco) {
         editor.focus();
         this.editor = editor;

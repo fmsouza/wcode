@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require("body-parser");
 
 /**
  * Class Router represents the RESTful router, which
@@ -9,8 +10,11 @@ module.exports = class Router {
 
     constructor() {
         this.driver = express();
+        this.driver.use(bodyParser.urlencoded({ extended: true }));
+        this.driver.use(bodyParser.json());
         this.driver.use(function(req, res, next) {
             res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
             res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
             console.log(`Serving route ${req.url} (${req.method})`);
             next();

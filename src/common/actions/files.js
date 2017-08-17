@@ -13,3 +13,21 @@ export const closeFile = (filePath) => {
     if (lastOpenedFile) Action.viewCode(lastOpenedFile);
     else Action.cleanCode();
 };
+
+export const closeCurrentFile = () => {
+    const currentFilePath = fileBuffer.activeFilePath;
+    closeFile(currentFilePath);
+};
+
+// TODO: Implement file creation
+export const newFile = () => {};
+
+// TODO: Implement file save
+export const saveFile = () => {
+    const activeFile = fileBuffer.activeFile;
+    const content = Action.getCode();
+    Services.saveFile({ ...activeFile, content });
+};
+
+// TODO: Implement save all files
+export const saveAllFiles = () => {};
