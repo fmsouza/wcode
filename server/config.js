@@ -1,6 +1,5 @@
-'use strict';
+const { resolve } = require('path');
 const fs = require('fs');
-const resolve = require('path').resolve;
 
 const loadedDir = (process.argv[2]) ? resolve(process.argv[2]) : '';
 if (!loadedDir) {
@@ -14,11 +13,16 @@ if (!loadedDir) {
 module.exports = {
     loadedDir: (process.argv[2]) ? resolve(process.argv[2]) : '',
     server: {
-        ip: '0.0.0.0',
+        host: '0.0.0.0',
         port: 8080
     },
-    routes: [
-        'control',
-        'files'
-    ]
+    actionTypes: {
+        READ_PROJECT: 'action/project/read',
+        CREATE_FILE: 'action/file/create',
+        READ_FILE: 'action/file/read',
+        UPDATE_FILE: 'action/file/update',
+        DELETE_FILE: 'action/file/delete',
+        EXIT_APP: 'action/control/exit',
+        KEEP_ALIVE: 'action/control/KEEP_ALIVE'
+    }
 };
