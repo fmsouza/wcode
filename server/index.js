@@ -11,9 +11,7 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
 wss.on('connection', (ws) => {
-    ws.on('open', () => console.log("Connection opened."));
-    ws.on('message', (event) => console.log("Message received."));
-    ws.send(JSON.stringify({ type: actionTypes.KEEP_ALIVE }));
+    ws.on('message', (event) => listener(ws, event));
 });
 
 server.listen(port, host, () => console.log('Listening on %d', server.address().port));
