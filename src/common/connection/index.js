@@ -8,7 +8,7 @@ const openConnection = () => {
     websocket.onopen = (e) => console.log("Connection opened.");
     websocket.onmessage = (event) => handleMessage(JSON.parse(event.data));
     websocket.onerror = console.error;
-    setInterval(() => Writers.keepAlive(), 2000);
+    setInterval(() => Writer.keepAlive(), 2000);
 };
 
 export { openConnection, Writer };

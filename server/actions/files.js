@@ -1,6 +1,6 @@
 const fs = require('fs');
 const mime = require('mime');
-const { ActionTypes, NotificationTypes } = require('../constants');
+const { ActionTypes, NotificationTypes, PROJECT_DIR } = require('../constants');
 const { notify, send } = require('./responses');
 
 const checkPath = (srcPath) => fs.lstatSync(srcPath);
@@ -15,22 +15,19 @@ const readDir = (srcPath, folders = []) => {
         if (stat.isFile()) files.push({ name, path, type: mime.lookup(path) });
         else if (stat.isDirectory()) folders.push(readDir(path));
     });
-    return { files, folders };
+    return { name: dirName, path: srcPath, files, folders };
 }
 
 const readProjectFiles = (ws, payload) => {
     try {
-        const { content, path } = payload.file;
+        const path = PROJECT_DIR;
         if (!checkPath(path).isDirectory()) throw new Error('The given path is not a directory.');
-        const name = path.split('/').pop();
-        const response = { name, path, ...readDir(path) };
+        const response = readDir(path);
         send(ws, ActionTypes.READ_PROJECT, response);
     } catch (e) {
         notify(ws, e.message, NotificationTypes.ERROR);
     }
 };
-
-// appendFile
 
 const createFile = (ws, payload) => {
     try {

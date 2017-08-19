@@ -1,5 +1,5 @@
-const Files = require('./files');
-const Control = require('./control');
+const files = require('./files');
+const control = require('./control');
 
 module.exports = {
     ...files,

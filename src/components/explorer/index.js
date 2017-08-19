@@ -9,7 +9,7 @@ import * as Action from 'common/actions';
 export default class Explorer extends React.Component {
 
     componentWillMount() {
-        // Action.loadProjectFiles();
+        Action.readProjectFiles();
     }
 
     onClickNode(node) {

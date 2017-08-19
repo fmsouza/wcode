@@ -1,5 +1,5 @@
-const { ActionTypes } = require('../constants');
-const Action = require('../actions');
+const { ActionTypes } = require('./constants');
+const Action = require('./actions');
 
 module.exports = (ws, message) => {
     const data = JSON.parse(message);

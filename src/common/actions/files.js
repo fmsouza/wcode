@@ -1,8 +1,9 @@
 import * as Action from 'common/actions';
 import * as Services from 'common/services';
+import { Writer } from 'common/connection';
 import { fileBuffer } from 'common/stores';
 
-export const loadProjectFiles = () => Services.loadProjectFiles();
+export const readProjectFiles = () => Writer.readProjectFiles();
 
 export const loadFile = ({ path }) => (fileBuffer.exists(path)) ?
     Action.viewCode(path) : Services.loadFile(path);
