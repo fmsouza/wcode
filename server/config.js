@@ -18,6 +18,7 @@ module.exports = {
         port: 8080
     },
     routes: [
+        'control',
         'files'
     ]
 };

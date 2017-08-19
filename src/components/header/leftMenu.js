@@ -35,6 +35,7 @@ export default class LeftMenu extends React.Component {
                 <div className="separator" />
                 <div className="clickable item" children="Close file" onClick={this.callAndClose(Action.closeCurrentFile)} />
                 <div className="clickable item" children="Close all" onClick={this.callAndClose(Action.closeAllFiles)} />
+                <div className="clickable item" children="Exit" onClick={this.callAndClose(Action.exit)} />
                 </div>
             )}
         </div>
