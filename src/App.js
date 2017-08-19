@@ -4,7 +4,6 @@ import Editor from './components/editor';
 import Header from './components/header';
 import Sidebar from './components/sidebar';
 import StatusBar from './components/statusBar';
-import * as Action from 'common/actions';
 import './App.css';
 
 @inject('view')
