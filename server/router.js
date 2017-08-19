@@ -1,7 +1,8 @@
-const { ActionTypes } = require('./constants');
+const { ActionTypes, DEBUG_MODE } = require('./constants');
 const Action = require('./actions');
 
 module.exports = (ws, message) => {
+    DEBUG_MODE && console.log("Received message:", message);
     const data = JSON.parse(message);
     switch (data.type) {
         case ActionTypes.CREATE_FILE: return Action.createFile(ws, data.payload);

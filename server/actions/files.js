@@ -1,9 +1,14 @@
 const fs = require('fs');
 const mime = require('mime');
-const { ActionTypes, NotificationTypes, PROJECT_DIR } = require('../constants');
+const { ActionTypes, DEBUG_MODE, NotificationTypes, PROJECT_DIR } = require('../constants');
 const { notify, send } = require('./responses');
 
 const checkPath = (srcPath) => fs.lstatSync(srcPath);
+
+const onError = (ws, message) => {
+    DEBUG_MODE && console.log("Error:", message);
+    notify(ws, message, NotificationTypes.ERROR);
+}
 
 const readDir = (srcPath, folders = []) => {
     const dirName = srcPath.split('/').pop();
@@ -24,8 +29,9 @@ const readProjectFiles = (ws, payload) => {
         if (!checkPath(path).isDirectory()) throw new Error('The given path is not a directory.');
         const response = readDir(path);
         send(ws, ActionTypes.READ_PROJECT, response);
+        DEBUG_MODE && console.log("readProjectFiles", path, response);
     } catch (e) {
-        notify(ws, e.message, NotificationTypes.ERROR);
+        onError(ws, e.message);
     }
 };
 
@@ -44,8 +50,9 @@ const createFile = (ws, payload) => {
             type: mime.lookup(path)
         };
         send(ws, ActionTypes.CREATE_FILE, response);
+        DEBUG_MODE && console.log("createFile", path, response);
     } catch (e) {
-        notify(ws, e.message, NotificationTypes.ERROR);
+        onError(ws, e.message);
     }
 };
 
@@ -60,8 +67,9 @@ const readFile = (ws, payload) => {
             type: mime.lookup(path)
         };
         send(ws, ActionTypes.READ_FILE, response);
+        DEBUG_MODE && console.log("readFile", path, response);
     } catch(e) {
-        notify(ws, e.message, NotificationTypes.ERROR);
+        onError(ws, e.message);
     }
 };
 
@@ -71,8 +79,9 @@ const updateFile = (ws, payload) => {
         if (!checkPath(path).isFile()) throw new Error('The given path is not a file.');
         fs.writeFileSync(path, content);
         send(ws, ActionTypes.UPDATE_FILE, { path });
+        DEBUG_MODE && console.log("updateFile", content, path);
     } catch(e) {
-        notify(ws, e.message, NotificationTypes.ERROR);
+        onError(ws, e.message);
     }
 
 };
@@ -83,8 +92,9 @@ const deleteFile = (ws, payload) => {
         if (!checkPath(path).isFile()) throw new Error('The given path is not a file.');
         fs.unlinkSync(path);
         send(ws, ActionTypes.DELETE_FILE, { path });
+        DEBUG_MODE && console.log("deleteFile", path);
     } catch (e) {
-        notify(ws, e.message, NotificationTypes.ERROR);
+        onError(ws, e.message);
     }
 
 };

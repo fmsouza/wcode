@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const open = require('opn');
 const WebSocket = require('ws');
-const { ActionTypes, SERVER_HOST, SERVER_PORT } = require('./constants');
+const { ActionTypes, DEBUG_MODE, SERVER_HOST, SERVER_PORT } = require('./constants');
 const router = require('./router');
 
 const app = express();
@@ -18,5 +18,5 @@ server.listen(SERVER_PORT, SERVER_HOST, () => {
     const address = server.address();
     console.log('Listening on %d', address.port);
     // open(`http://${address.host}:${address.port}`);
-    open(`http://${SERVER_HOST}:3000`); // Hardcoding web development server address
+    !DEBUG_MODE && open(`http://${SERVER_HOST}:${SERVER_PORT}`);
 });

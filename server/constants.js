@@ -1,6 +1,8 @@
 const { resolve } = require('path');
 const fs = require('fs');
 
+const DEBUG_MODE = process.env.NODE_ENV === 'development';
+
 const loadedDir = (process.argv[2]) ? resolve(process.argv[2]) : '';
 if (!loadedDir) {
     console.log("You must specify the project path.\n");
@@ -33,6 +35,7 @@ const NotificationTypes = {
 };
 
 module.exports = {
+    DEBUG_MODE,
     PROJECT_DIR,
     SERVER_HOST,
     SERVER_PORT,
