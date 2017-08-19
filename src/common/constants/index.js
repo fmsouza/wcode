@@ -1,3 +1,4 @@
+import * as ActionTypes from './actionTypes';
 import * as General from './general';
 
-export { General };
+export { ActionTypes, General };

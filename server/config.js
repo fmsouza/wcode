@@ -23,6 +23,6 @@ module.exports = {
         UPDATE_FILE: 'action/file/update',
         DELETE_FILE: 'action/file/delete',
         EXIT_APP: 'action/control/exit',
-        KEEP_ALIVE: 'action/control/KEEP_ALIVE'
+        KEEP_ALIVE: 'action/control/keepalive'
     }
 };

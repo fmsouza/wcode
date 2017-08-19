@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import * as stores from 'common/stores';
 import App from './App';
-import setup from './setup';
+import './setup';
 
 const Application = () => (
     <Provider {...stores}>
@@ -12,4 +12,3 @@ const Application = () => (
 );
 
 ReactDOM.render(<Application />, document.getElementById('root'));
-setup();
