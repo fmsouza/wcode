@@ -15,6 +15,7 @@
 }
 
 .FileTree .rootTitle {
+    justify-content: space-between;
     background-color: #383838;
     color: #CCCCCC;
     height: 24px;
@@ -24,6 +25,24 @@
     font-size: 11px;
     text-transform: uppercase;
     box-shadow: 1px 1px 3px black;
+}
+
+.FileTree .rootTitle .column {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.FileTree .rootTitle .right.column {
+    display: none;
+}
+
+.FileTree:hover .rootTitle .right.column {
+    display: initial;
+}
+
+.FileTree .rootTitle .right.column .icon {
+    margin: 5px;
 }
 
 .FileTree .rootContent {

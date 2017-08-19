@@ -2,6 +2,7 @@ import React from 'react';
 import Icon from '../icon';
 import ItemFile from './file';
 import ItemFolder from './folder';
+import * as Action from 'common/actions';
 import './styles.css';
 
 export default class FileTree extends React.Component {
@@ -10,6 +11,11 @@ export default class FileTree extends React.Component {
 
     get iconName() {
         return (this.state.collapsed) ? 'chevron-right' : 'chevron-down';
+    }
+
+    collapseAll() {
+        const collapsed = true;
+        this.setState({ collapsed }, () => this.setState({ collapsed: !collapsed }));
     }
     
     renderFile = (item) => <ItemFile {...item} key={item.path} onClick={this.props.onClickNode} />;
@@ -30,9 +36,15 @@ export default class FileTree extends React.Component {
         const { title } = this.props;
         return (
             <div className="FileTree">
-                <div className="rootTitle title" onClick={() => this.setState({ collapsed: !this.state.collapsed })}>
-                    <Icon name={this.iconName} className="icon" />
-                    {title}
+                <div className="rootTitle title">
+                    <div className="left column" onClick={() => this.setState({ collapsed: !this.state.collapsed })}>
+                        <Icon name={this.iconName} className="icon" />
+                        {title}
+                    </div>
+                    <div className="right column">
+                        <Icon name="refresh" className="icon" onClick={Action.readProjectFiles} />
+                        <Icon name="collapse" className="icon" onClick={() => this.collapseAll()} />
+                    </div>
                 </div>
                 {this.renderFileTree(this.state.collapsed)}
             </div>
