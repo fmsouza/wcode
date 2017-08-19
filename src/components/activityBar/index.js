@@ -29,11 +29,13 @@ export default class ActivityBar extends React.Component {
                         className={`icon ${this.isActive(TOOL_EXPLORER)}`}
                         onClick={() => this.selectOption(TOOL_EXPLORER)}
                     />
-                    <Icon
-                        name="search"
-                        className={`icon ${this.isActive(TOOL_SEARCH)}`}
-                        onClick={() => this.selectOption(TOOL_SEARCH)}
-                    />
+                    {/*
+                        <Icon
+                            name="search"
+                            className={`icon ${this.isActive(TOOL_SEARCH)}`}
+                            onClick={() => this.selectOption(TOOL_SEARCH)}
+                        />
+                    */}
                 </div>
                 <div className="bottom" />
             </div>
