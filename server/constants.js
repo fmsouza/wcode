@@ -21,7 +21,8 @@ const ActionTypes = {
     UPDATE_FILE: 'action/file/update',
     DELETE_FILE: 'action/file/delete',
     EXIT_APP: 'action/control/exit',
-    KEEP_ALIVE: 'action/control/keepalive'
+    KEEP_ALIVE: 'action/control/keepalive',
+    NOTIFICATION: 'action/control/notify'
 };
 
 const NotificationTypes = {

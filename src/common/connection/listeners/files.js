@@ -1,15 +1,22 @@
+import * as Action from 'common/actions';
 import { project, fileBuffer } from 'common/stores';
 import { Writer } from 'common/connection';
 
 export const readProjectFiles = (payload) => project.load(payload);
 
-export const createFile = (payload) => {};
+export const createFile = (file) => {
+    Writer.readProjectFiles();
+    readFile(file);
+}
 
-export const readFile = (payload) => fileBuffer.addToBuffer(payload);
+export const readFile = (file) => {
+    fileBuffer.addToBuffer(file);
+    Action.viewCode(file.path);
+}
 
-export const updateFile = (payload) => console.log("File updated.");
+export const updateFile = ({ path }) => console.log("Updated:", path);
 
-export const deleteFile = (payload) => {
-    fileBuffer.close(payload.path);
+export const deleteFile = (file) => {
+    fileBuffer.close(file.path);
     Writer.readProjectFiles();
 };

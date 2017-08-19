@@ -1,12 +1,11 @@
 import * as Action from 'common/actions';
-import * as Services from 'common/services';
 import { Writer } from 'common/connection';
 import { fileBuffer } from 'common/stores';
 
 export const readProjectFiles = () => Writer.readProjectFiles();
 
 export const loadFile = ({ path }) => (fileBuffer.exists(path)) ?
-    Action.viewCode(path) : Services.loadFile(path);
+    Action.viewCode(path) : Writer.readFile({ path });
 
 export const closeFile = (filePath) => {
     fileBuffer.close(filePath);
@@ -29,7 +28,7 @@ export const saveFile = () => {
     const activeFile = fileBuffer.activeFile;
     if (!activeFile) return;
     const content = Action.getCode();
-    Services.saveFile({ ...activeFile, content });
+    Writer.updateFile({ ...activeFile, content });
 };
 
 export const saveAllFiles = () => fileBuffer.openedFiles.map(file => saveFile(file));

@@ -5,10 +5,9 @@ import { General } from 'common/constants';
 const openConnection = () => {
     const websocket = new WebSocket(General.API_URL);
     Writer.registerSocket(websocket);
-    websocket.onopen = (e) => console.log("Connection opened.");
+    websocket.onopen = (e) => Writer.keepAlive();
     websocket.onmessage = (event) => handleMessage(JSON.parse(event.data));
     websocket.onerror = console.error;
-    setInterval(() => Writer.keepAlive(), 2000);
 };
 
 export { openConnection, Writer };

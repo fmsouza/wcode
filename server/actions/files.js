@@ -51,7 +51,7 @@ const createFile = (ws, payload) => {
 
 const readFile = (ws, payload) => {
     try {
-        const { content, path } = payload.file;
+        const { path } = payload.file;
         if (!checkPath(path).isFile()) throw new Error('The given path is not a file.');
         const response = {
             name: path.split('/').pop(),
@@ -79,7 +79,7 @@ const updateFile = (ws, payload) => {
 
 const deleteFile = (ws, payload) => {
     try {
-        const { content, path } = payload.file;
+        const { path } = payload.file;
         if (!checkPath(path).isFile()) throw new Error('The given path is not a file.');
         fs.unlinkSync(path);
         send(ws, ActionTypes.DELETE_FILE, { path });

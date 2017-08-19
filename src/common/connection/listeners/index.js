@@ -10,6 +10,7 @@ export default (message) => {
         case ActionTypes.READ_FILE: return Files.readFile(message.payload);
         case ActionTypes.READ_PROJECT: return Files.readProjectFiles(message.payload);
         case ActionTypes.UPDATE_FILE: return Files.updateFile(message.payload);
-        default: console.log("Unhandled incoming message type:", message.type);
+        case ActionTypes.NOTIFICATION: return Control.notification(message.payload);
+        default: console.log("Unhandled incoming message type:", message);
     }
 };

@@ -1,3 +1,3 @@
-import * as Services from 'common/services';
+import { Writer } from 'common/connection';
 
-export const exit = () => Services.exit();
+export const exit = () => Writer.exit();

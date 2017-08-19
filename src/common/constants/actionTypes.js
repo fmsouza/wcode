@@ -6,3 +6,4 @@ export const UPDATE_FILE = 'action/file/update';
 export const DELETE_FILE = 'action/file/delete';
 export const EXIT_APP = 'action/control/exit';
 export const KEEP_ALIVE = 'action/control/keepalive';
+export const NOTIFICATION = 'action/control/notify';

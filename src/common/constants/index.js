@@ -1,4 +1,5 @@
 import * as ActionTypes from './actionTypes';
 import * as General from './general';
+import * as Notification from './notifications';
 
-export { ActionTypes, General };
+export { ActionTypes, General, Notification };
