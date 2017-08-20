@@ -1,13 +1,9 @@
 import keyboardJS from 'keyboardjs';
 import * as Action from 'common/actions';
 
+const bind = (commands, fn) => keyboardJS.on(commands, (event) => event.preventDefault() || fn());
+
 export const registerKeyboardBindings = () => {
-    keyboardJS.on(['ctrl + s', 'command + s'], (event) => {
-        event.preventDefault();
-        Action.saveFile();
-    });
-    keyboardJS.on(['ctrl + w'], (event) => {
-        event.preventDefault();
-        Action.closeCurrentFile();
-    });
+    bind(['ctrl + s', 'command + s'], Action.saveFile);
+    bind(['ctrl + w'], Action.closeCurrentFile);
 };
