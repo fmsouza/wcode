@@ -4,6 +4,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe WPC, Segoe UI, HelveticaNeue-Light, Ubuntu, Droid Sans, sans-serif;
     user-select: none;
     background-color: #1E1E1E;
+    overflow: hidden;
 }
 
 .App {
