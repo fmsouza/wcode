@@ -15,6 +15,12 @@ export default class ItemFolder extends React.Component {
         const collapsed = !this.state.collapsed;
         this.setState({ collapsed }, () => onClick({ name, path, collapsed }));
     }
+
+    onRightClick(e) {
+        e.preventDefault();
+        const { path } = this.props;
+        console.log("Right clicked:", path);
+    }
     
     renderFile = (item) => <ItemFile {...item} key={item.path} onClick={this.props.onClick} />;
     
@@ -31,7 +37,7 @@ export default class ItemFolder extends React.Component {
         const { collapsed } = this.state;
         return (
             <div className="ItemFolder">
-                <div className="node" onClick={() => this.onClick()}>
+                <div className="node" onClick={() => this.onClick()} onContextMenu={(e) => this.onRightClick(e)}>
                     <div className="title">
                         <Icon name={this.iconName} className="icon" />
                         {name}
