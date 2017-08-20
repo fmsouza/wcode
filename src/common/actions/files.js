@@ -32,3 +32,13 @@ export const saveFile = () => {
 };
 
 export const saveAllFiles = () => fileBuffer.openedFiles.map(file => saveFile(file));
+
+export const viewNextFile = () => {
+    const nextFile = fileBuffer.nextFile;
+    loadFile(nextFile);
+};
+
+export const viewPreviousFile = () => {
+    const previousFile = fileBuffer.previousFile;
+    loadFile(previousFile);
+};

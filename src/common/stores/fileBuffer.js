@@ -16,10 +16,20 @@ class FileBufferStore {
     @observable activeFilePath = '';
 
     previousFilePaths = [];
-
+    
     @computed get activeFile() {
         const position = indexes[this.activeFilePath];
         return this.openedFiles[position];
+    }
+    
+    @computed get nextFile() {
+        const position = (indexes[this.activeFilePath] + 1) % this.openedFiles.length;
+        return this.openedFiles[position];
+    }
+    
+    @computed get previousFile() {
+        const position = indexes[this.activeFilePath] - 1;
+        return (position > -1) ? this.openedFiles[position] : this.openedFiles[this.openedFiles.length - 1];
     }
 
     @computed get fileStates() {
