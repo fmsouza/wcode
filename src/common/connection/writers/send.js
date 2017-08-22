@@ -1,6 +1,6 @@
 const send = (ws, type, payload) => {
     const response = { type, payload };
-    if (ws.readyState !== ws.OPEN) return setImmediate(() => send(ws, type, payload));
+    if (ws.readyState !== ws.OPEN) return setTimeout(() => send(ws, type, payload), 0);
     ws.send(JSON.stringify(response));
 };
 

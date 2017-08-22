@@ -1,4 +1,5 @@
 import React from 'react';
+import { General } from 'common/constants';
 import MonacoEditor from 'react-monaco-editor'; // Reference: https://github.com/superRaytin/react-monaco-editor
 import './styles.css';
 
@@ -14,6 +15,14 @@ export default class TextEditor extends React.Component {
         selectOnLineNumbers: true,
         theme: 'vs-dark'
     };
+
+    get requireConfig() {
+        const basePath = (General.DEBUG) ? '../build/vendor' : 'vendor';
+        return {
+            url: `${basePath}/vs/loader.js`,
+            paths: { 'vs': `${basePath}/vs` }
+        };
+    }
 
     get visible() {
         return this.state.value && this.state.language;
@@ -42,6 +51,7 @@ export default class TextEditor extends React.Component {
                     options={this.options}
                     onChange={(value) => this.setState({ value })}
                     editorDidMount={(editor, monaco) => this.editorDidMount(editor, monaco)}
+                    requireConfig={this.requireConfig}
                 />
             </div>
         );

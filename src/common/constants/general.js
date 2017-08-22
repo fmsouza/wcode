@@ -1,5 +1,5 @@
 // {string} API_URL - Backend API HTTP address
-export const API_URL = process.env.REACT_APP_API_URL;
+export const API_URL = "ws://localhost:8080";
 
 // {string} CONTACT_EMAIL - Support e-mail address
 export const CONTACT_EMAIL = "fredericoamsouza@gmail.com";
