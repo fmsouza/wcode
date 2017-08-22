@@ -14,8 +14,9 @@
   "author": "Frederico Souza (fredericoamsouza@gmail.com)",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
-    "start": "NODE_PATH=./src react-app-rewired start",
-    "server": "NODE_ENV=development node server .",
+    "start": "npm-run-all --parallel dev:*",
+    "dev:start": "NODE_PATH=./src react-app-rewired start",
+    "dev:server": "NODE_ENV=development node server .",
     "build": "NODE_PATH=./src react-app-rewired build",
     "prepublishOnly": "npm run build",
     "test": "NODE_PATH=./src react-app-rewired test --env=jsdom",
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "copy-webpack-plugin": "4.0.1",
+    "npm-run-all": "4.0.2",
     "react-app-rewire-mobx": "1.0.6",
     "react-app-rewired": "1.2.0",
     "react-scripts": "1.0.11"
