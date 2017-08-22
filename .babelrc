@@ -1,0 +1,35 @@
+{
+    "env": {
+        "development": {
+            "presets": [
+                ["es2015", { "modules": false }],
+                "stage-0",
+                "react"
+            ],
+            "plugins": [
+                "external-helpers",
+                "transform-decorators-legacy",
+                ["module-alias", [{ "src": "./src/common", "expose": "common" }]]
+            ]
+        },
+        "production": {
+            "presets": [
+                ["es2015", { "modules": false }],
+                "stage-0",
+                "react"
+            ],
+            "plugins": [
+                "external-helpers",
+                "transform-decorators-legacy",
+                ["module-alias", [{ "src": "./src/common", "expose": "common" }]]
+            ]
+        },
+        "test": {
+            "presets": ["es2015", "stage-0", "react"],
+            "plugins": [
+                "transform-decorators-legacy",
+                ["module-alias", { "src": "./src/common", "expose": "common" }]
+            ]
+        }
+    }
+}

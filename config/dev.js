@@ -20,22 +20,13 @@ export default {
     copy({
         "node_modules/monaco-editor/min/vs": "build/vendor/vs",
     }),
+    alias({ 'vs': path.resolve('node_modules/monaco-editor/min/vs') }),
     postcss({
-      extensions: [ '.css' ]
+      extensions: ['.css']
     }),
     babel({
-      babelrc: false,
+      babelrc: true,
       exclude: 'node_modules/**',
-      presets: [ [ 'es2015', { modules: false } ], 'stage-0', 'react' ],
-      plugins: [ 'external-helpers', 'transform-decorators-legacy' ]
-    }),
-    alias({
-      'common/actions': path.resolve('src/common/actions/index.js'),
-      'common/connection': path.resolve('src/common/connection/index.js'),
-      'common/constants': path.resolve('src/common/constants/index.js'),
-      'common/stores': path.resolve('src/common/stores/index.js'),
-      'common/utils': path.resolve('src/common/utils/index.js'),
-      'vs': path.resolve('node_modules/monaco-editor/min/vs'),
     }),
     cjs({
       namedExports: {
