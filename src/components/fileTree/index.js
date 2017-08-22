@@ -20,7 +20,7 @@ export default class FileTree extends React.Component {
     
     renderFile = (item) => <ItemFile {...item} key={item.path} onClick={this.props.onClickNode} />;
     
-    renderFolder = (item) => <ItemFolder onClick={this.props.onClickNode} key={item.path} {...item} />;
+    renderFolder = (item) => <ItemFolder {...item} key={item.path} onClick={this.props.onClickNode} />;
 
     renderFileTree(collapsed) {
         if (collapsed) return null;

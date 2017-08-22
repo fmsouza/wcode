@@ -24,12 +24,13 @@ export default class ItemFolder extends React.Component {
     
     renderFile = (item) => <ItemFile {...item} key={item.path} onClick={this.props.onClick} />;
     
-    renderFolder = (item) => <ItemFolder onClick={this.props.onClick} key={item.path} {...item} />;
+    renderFolder = (item) => <ItemFolder {...item} key={item.path} onClick={this.props.onClick} />;
 
     renderSubNodes = (files, folders) => (
-        <div className="subnodes">
-            {[].concat(folders.map(this.renderFolder)).concat(files.map(this.renderFile))}
-        </div>
+        <div
+            className="subnodes"
+            children={[].concat(folders.map(this.renderFolder)).concat(files.map(this.renderFile))}
+        />
     );
 
     render() {
