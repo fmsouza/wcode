@@ -4,10 +4,11 @@ import uglify from 'rollup-plugin-uglify';
 
 // Import the development configuration.
 import config from './dev';
+import variables from './prod.variables';
 
 // Inject the production settings.
 config.output.file = 'build/app/bundle.min.js';
-config.plugins[6] = replace({ 'process.env.NODE_ENV': JSON.stringify('production') });
+config.plugins[6] = replace(variables);
 config.plugins.push(copy({
     "public/index.html": "build/index.html",
 }));

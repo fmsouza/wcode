@@ -8,6 +8,8 @@ import replace from 'rollup-plugin-replace';
 import resolve from 'rollup-plugin-node-resolve';
 import path from 'path';
 
+import variables from './dev.variables';
+
 export default {
   input: 'src/index.js',
   output: {
@@ -54,7 +56,7 @@ export default {
       ]
     }),
     globals(),
-    replace({ 'process.env.NODE_ENV': JSON.stringify('development') }),
+    replace(variables),
     resolve({
       browser: true,
       main: true
