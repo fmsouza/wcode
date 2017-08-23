@@ -24,7 +24,7 @@ export const readProjectFiles = () => {
 
 export const createFile = (file) => {
     if (!ws) return console.error("Connection not opened.");
-    Files.readFile(sendHandler(), file);
+    Files.createFile(sendHandler(), file);
 };
 
 export const readFile = (file) => {

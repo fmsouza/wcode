@@ -1,13 +1,22 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
+import * as Action from 'common/actions';
 
 @inject('fileBuffer')
 @observer
 export default class ItemFile extends React.Component {
 
+    state = { name: '', path: '', type: '' };
+
     get selected() {
         const { fileBuffer, path } = this.props;
         return fileBuffer.activeFilePath === path;
+    }
+
+    componentDidMount() {
+        const { name, path, type } = this.props;
+        if (type === 'input') this.setState({ type }, () => this.refs.newFile && this.refs.newFile.focus());
+        else this.setState({ name, path, type });
     }
     
     onRightClick(e) {
@@ -16,7 +25,24 @@ export default class ItemFile extends React.Component {
         console.log("Right clicked:", path);
     }
 
-    render() {
+    onKeyPress = (e) => {
+        const keyCode = e.keyCode || e.which;
+        if (keyCode !== 13) return;
+        Action.createNewFile(`${this.props.path}/${e.target.value}`);
+        this.setState({ name: e.target.value, path: this.props.path, type: 'file' });
+    };
+
+    renderEdit() {
+        return (
+            <div className="ItemFile">
+                <div className="node">
+                    <input ref="newFile" type="text" onKeyPress={this.onKeyPress} />
+                </div>
+            </div>
+        );
+    }
+
+    renderReadOnly() {
         const { name, path, onClick, type } = this.props;
         return (
             <div className="ItemFile">
@@ -29,5 +55,10 @@ export default class ItemFile extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    render() {
+        const { type } = this.state;
+        return (!type || type === 'input') ? this.renderEdit() : this.renderReadOnly();
     }
 }

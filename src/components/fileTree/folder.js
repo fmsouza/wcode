@@ -4,10 +4,19 @@ import ItemFile from './file';
 
 export default class ItemFolder extends React.Component {
 
-    state = { collapsed: true };
+    state = { collapsed: true, files: [], folders: [] };
     
     get iconName() {
         return (this.state.collapsed) ? 'chevron-right' : 'chevron-down';
+    }
+
+    componentWillMount() {
+        const { files, folders } = this.props;
+        this.setState({ files, folders });
+    }
+
+    componentWillReceiveProps({ files, folders }) {
+        this.setState({ files, folders });
     }
 
     onClick() {
@@ -21,10 +30,25 @@ export default class ItemFolder extends React.Component {
         const { path } = this.props;
         console.log("Right clicked:", path);
     }
+
+    createNewFile() {
+        const { path } = this.props;
+        const { files } = this.state;
+        files.push({ type: 'input', path });
+        this.setState({ files });
+    }
     
-    renderFile = (item) => <ItemFile {...item} key={item.path} onClick={this.props.onClick} />;
+    renderFile = (item) => <ItemFile {...item} key={`${item.path}-${Math.random()}`} onClick={this.props.onClick} />;
     
-    renderFolder = (item) => <ItemFolder {...item} key={item.path} onClick={this.props.onClick} />;
+    renderFolder = (item) => (
+        <ItemFolder
+            {...item}
+            key={`${item.path}-${Math.random()}`}
+            onClick={this.props.onClick}
+            onRenderChild={this.props.onRenderChild}
+            ref={ref => this.props.onRenderChild(item.path, ref)}
+        />
+    );
 
     renderSubNodes = (files, folders) => (
         <div
@@ -34,14 +58,13 @@ export default class ItemFolder extends React.Component {
     );
 
     render() {
-        const { name, files, folders } = this.props;
-        const { collapsed } = this.state;
+        const { collapsed, files, folders } = this.state;
         return (
             <div className="ItemFolder">
                 <div className="node" onClick={() => this.onClick()} onContextMenu={(e) => this.onRightClick(e)}>
                     <div className="title">
                         <Icon name={this.iconName} className="icon" />
-                        {name}
+                        {this.props.name}
                     </div>
                 </div>
                 {!collapsed && this.renderSubNodes(files, folders)}

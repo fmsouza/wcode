@@ -82,3 +82,11 @@
 .FileTree .ItemFile .node {
     padding-left: 28px;
 }
+
+.FileTree .node input {
+    outline: none;
+    background-color: #383838;
+    border: 1px solid #094771;
+    color: #CBCBCB;
+    font-size: 13px;
+}

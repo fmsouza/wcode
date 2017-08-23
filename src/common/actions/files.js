@@ -2,6 +2,15 @@ import * as Action from 'common/actions';
 import { Writer } from 'common/connection';
 import { fileBuffer } from 'common/stores';
 
+let fileTreeHandler = null;
+
+/**
+ * Takes an instance of the file tree as input and use it to handle the file creation actions.
+ * @param {object} ref - file tree component instance
+ * @return {void}
+ */
+export const setFileTreeHandler = (ref) => fileTreeHandler = ref;
+
 export const readProjectFiles = () => Writer.readProjectFiles();
 
 export const loadFile = ({ path }) => (fileBuffer.exists(path)) ?
@@ -21,8 +30,18 @@ export const closeCurrentFile = () => {
 
 export const closeAllFiles = () => fileBuffer.fileStates.map(({ path }) => closeFile(path));
 
-// TODO: Implement file creation
-export const newFile = () => {};
+export const createNewFile = (path) => Writer.createFile({ path });
+
+export const triggerNewFile = () => {
+    if (!fileBuffer.activeFile) return;
+    let path = fileBuffer.activeFile.path.split('/');
+    path.pop();
+    path = path.join('/');
+    fileTreeHandler.createFile(path);
+};
+
+// TODO: Implement folder creation
+export const createNewFolder = () => {};
 
 export const saveFile = () => {
     const activeFile = fileBuffer.activeFile;

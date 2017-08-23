@@ -21,9 +21,11 @@ export default class Explorer extends React.Component {
         if (project.loading || !project.name) return null;
         return (
             <FileTree
+            path={project.path}
                 title={project.name}
-                onClickNode={(node) => this.onClickNode(node)}
                 content={project.content}
+                ref={Action.setFileTreeHandler}
+                onClickNode={(node) => this.onClickNode(node)}
             />
         );
 
