@@ -1,6 +1,6 @@
 import * as Action from 'common/actions';
 import { Writer } from 'common/connection';
-import { fileBuffer } from 'common/stores';
+import { project, fileBuffer } from 'common/stores';
 
 let fileTreeHandler = null;
 
@@ -33,10 +33,14 @@ export const closeAllFiles = () => fileBuffer.fileStates.map(({ path }) => close
 export const createNewFile = (path) => Writer.createFile({ path });
 
 export const triggerNewFile = () => {
-    if (!fileBuffer.activeFile) return;
-    let path = fileBuffer.activeFile.path.split('/');
-    path.pop();
-    path = path.join('/');
+    let path = '';
+    if (fileBuffer.activeFile) {
+        let path = fileBuffer.activeFile.path.split('/');
+        path.pop();
+        path = path.join('/');
+    } else {
+        path = project.path;
+    }
     fileTreeHandler.createFile(path);
 };
 
