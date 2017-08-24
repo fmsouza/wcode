@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Action from 'common/actions';
 import './styles.css';
 
 export default class ArchiveMenu extends React.Component {
@@ -12,12 +13,10 @@ export default class ArchiveMenu extends React.Component {
         fn();
     };
     
-    onClickOpen = () => {
-        console.log("Attempting to open file...");
-    }
+    onClickOpen = () => Action.loadFile(this.props);
     
     onClickDelete = () => {
-        console.log("Attempting to delete file...");
+        console.log("Attempting to delete file...", this.props.path);
     }
 
     renderMenu = (collapsed) => !collapsed && (

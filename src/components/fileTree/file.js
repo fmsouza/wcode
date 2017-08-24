@@ -54,7 +54,7 @@ export default class ItemFile extends React.Component {
                 >
                     <div className="title">{name}</div>
                 </div>
-                <Menu ref="fileMenu" path={path} />
+                <Menu ref="fileMenu" {...this.props} />
             </div>
         );
     }
