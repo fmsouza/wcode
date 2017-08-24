@@ -29,15 +29,15 @@ export default class FileTree extends React.Component {
         this.setState({ collapsed }, () => this.setState({ collapsed: !collapsed }));
     }
 
-    createFile = (path) => {
+    createNewElement = (path, type = 'newfile') => {
         const element = (this.props.path === path) ? this : this.childFolders[path];
-        element.createNewFile();
+        element.createElement(type);
     }
     
-    createNewFile() {
+    createElement(type) {
         const { path } = this.props;
         const { files } = this.state;
-        files.push({ type: 'input', path });
+        files.push({ type, path });
         this.setState({ files });
     }
 
@@ -78,7 +78,7 @@ export default class FileTree extends React.Component {
                     </div>
                     <div className="right column">
                         <Icon name="new-file" className="icon" onClick={Action.triggerNewFile} />
-                        <Icon name="new-folder" className="icon" onClick={Action.createNewFolder} />
+                        <Icon name="new-folder" className="icon" onClick={Action.triggerNewDirectory} />
                         <Icon name="refresh" className="icon" onClick={Action.readProjectFiles} />
                         <Icon name="collapse" className="icon" onClick={() => this.collapseAll()} />
                     </div>

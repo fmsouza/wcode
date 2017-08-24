@@ -31,10 +31,10 @@ export default class ItemFolder extends React.Component {
         console.log("Right clicked:", path);
     }
 
-    createNewFile() {
+    createElement(type) {
         const { path } = this.props;
         const { files } = this.state;
-        files.push({ type: 'input', path });
+        files.push({ type, path });
         this.setState({ files });
     }
     

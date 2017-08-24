@@ -41,3 +41,13 @@ export const deleteFile = (file) => {
     if (!ws) return console.error("Connection not opened.");
     Files.deleteFile(sendHandler(), file);
 };
+
+export const createDirectory = (directory) => {
+    if (!ws) return console.error("Connection not opened.");
+    Files.createDirectory(sendHandler(), directory);
+};
+
+export const deleteDirectory = (directory) => {
+    if (!ws) return console.error("Connection not opened.");
+    Files.deleteDirectory(sendHandler(), directory);
+};

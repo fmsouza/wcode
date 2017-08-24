@@ -16,7 +16,8 @@ export default class ItemFile extends React.Component {
 
     componentDidMount() {
         const { name, path, type } = this.props;
-        if (type === 'input') this.setState({ type }, () => this.refs.newFile && this.refs.newFile.focus());
+        if (type === 'newfile' || type === 'newdirectory')
+            this.setState({ type }, () => this.refs.newFile && this.refs.newFile.focus());
         else this.setState({ name, path, type });
     }
     
@@ -30,7 +31,8 @@ export default class ItemFile extends React.Component {
         const keyCode = e.keyCode || e.which;
         if (keyCode !== 13) return;
         const path = `${this.props.path}/${e.target.value}`;
-        Action.createNewFile(path);
+        return (this.state.type === 'newfile') ?
+            Action.createNewFile(path) : Action.createNewDirectory(path);
     };
 
     renderEdit() {
@@ -61,6 +63,7 @@ export default class ItemFile extends React.Component {
 
     render() {
         const { type } = this.state;
-        return (!type || type === 'input') ? this.renderEdit() : this.renderReadOnly();
+        return (!type || type === 'newfile' || type === 'newdirectory') ?
+            this.renderEdit() : this.renderReadOnly();
     }
 }

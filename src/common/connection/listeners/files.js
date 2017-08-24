@@ -4,8 +4,10 @@ import { Writer } from 'common/connection';
 
 export const readProjectFiles = (payload) => project.load(payload);
 
+export const updateProject = () => Writer.readProjectFiles();
+
 export const createFile = (file) => {
-    Writer.readProjectFiles();
+    updateProject();
     readFile(file);
 }
 
@@ -14,9 +16,7 @@ export const readFile = (file) => {
     Action.viewCode(file.path);
 }
 
-export const updateFile = ({ path }) => console.log("Updated:", path);
-
 export const deleteFile = (file) => {
     fileBuffer.close(file.path);
-    Writer.readProjectFiles();
+    updateProject();
 };

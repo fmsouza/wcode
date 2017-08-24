@@ -43,11 +43,22 @@ export const triggerNewFile = () => {
     } else {
         path = project.path;
     }
-    fileTreeHandler.createFile(path);
+    fileTreeHandler.createNewElement(path);
 };
 
-// TODO: Implement folder creation
-export const createNewFolder = () => {};
+export const createNewDirectory = (path) => Writer.createDirectory({ path });
+
+export const triggerNewDirectory = () => {
+    let path = '';
+    if (fileBuffer.activeFile) {
+        let path = fileBuffer.activeFile.path.split('/');
+        path.pop();
+        path = path.join('/');
+    } else {
+        path = project.path;
+    }
+    fileTreeHandler.createNewElement(path, 'newdirectory');
+};
 
 export const saveFile = () => {
     const activeFile = fileBuffer.activeFile;
