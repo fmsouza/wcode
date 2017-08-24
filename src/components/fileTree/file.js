@@ -28,8 +28,8 @@ export default class ItemFile extends React.Component {
     onKeyPress = (e) => {
         const keyCode = e.keyCode || e.which;
         if (keyCode !== 13) return;
-        Action.createNewFile(`${this.props.path}/${e.target.value}`);
-        this.setState({ name: e.target.value, path: this.props.path, type: 'file' });
+        const path = `${this.props.path}/${e.target.value}`;
+        Action.createNewFile(path);
     };
 
     renderEdit() {

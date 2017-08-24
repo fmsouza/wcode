@@ -38,9 +38,7 @@ const readProjectFiles = (ws, payload) => {
 const createFile = (ws, payload) => {
     try {
         const { path } = payload.file;
-        const state = checkPath(path);
-        if (state.isFile()) throw new Error('A file with this name already exists.');
-        else if (state.isDirectory()) throw new Error('The given path is a directory.');
+        if (fs.existsSync(path)) throw new Error('A file with this name already exists.');
         const content = '';
         fs.appendFileSync(path, content);
         const response = {
