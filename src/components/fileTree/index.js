@@ -77,9 +77,9 @@ export default class FileTree extends React.Component {
                         {title}
                     </div>
                     <div className="right column">
-                        <Icon name="new-file" className="icon" onClick={Action.triggerNewFile} />
-                        <Icon name="new-folder" className="icon" onClick={Action.triggerNewDirectory} />
-                        <Icon name="refresh" className="icon" onClick={Action.readProjectFiles} />
+                        <Icon name="new-file" className="icon" onClick={() => Action.triggerNewFile()} />
+                        <Icon name="new-folder" className="icon" onClick={() => Action.triggerNewDirectory()} />
+                        <Icon name="refresh" className="icon" onClick={() => Action.readProjectFiles()} />
                         <Icon name="collapse" className="icon" onClick={() => this.collapseAll()} />
                     </div>
                 </div>

@@ -34,31 +34,33 @@ export const createNewFile = (path) => Writer.createFile({ path });
 
 export const deleteFile = (file) => Writer.deleteFile(file);
 
-export const triggerNewFile = () => {
-    let path = '';
-    if (fileBuffer.activeFile) {
-        let path = fileBuffer.activeFile.path.split('/');
-        path.pop();
-        path = path.join('/');
-    } else {
+export const triggerNewFile = (path = '') => {
+    if (!path) {
         path = project.path;
+        if (fileBuffer.activeFilePath) {
+            path = fileBuffer.activeFilePath.split('/');
+            path.pop();
+            path = path.join('/');
+        }
     }
     fileTreeHandler.createNewElement(path);
 };
 
 export const createNewDirectory = (path) => Writer.createDirectory({ path });
 
-export const triggerNewDirectory = () => {
-    let path = '';
-    if (fileBuffer.activeFile) {
-        let path = fileBuffer.activeFile.path.split('/');
-        path.pop();
-        path = path.join('/');
-    } else {
+export const triggerNewDirectory = (path = '') => {
+    if (!path) {
         path = project.path;
+        if (fileBuffer.activeFilePath) {
+            path = fileBuffer.activeFilePath.split('/');
+            path.pop();
+            path = path.join('/');
+        }
     }
     fileTreeHandler.createNewElement(path, 'newdirectory');
 };
+
+export const deleteDirectory = (directory) => Writer.deleteDirectory(directory);
 
 export const saveFile = () => {
     const activeFile = fileBuffer.activeFile;

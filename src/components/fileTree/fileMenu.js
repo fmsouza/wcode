@@ -2,9 +2,20 @@ import React from 'react';
 import * as Action from 'common/actions';
 import './styles.css';
 
-export default class ArchiveMenu extends React.Component {
+export default class FileMenu extends React.Component {
     
     state = { collapsed: true, x: 0, y: 0 };
+    
+    componentWillMount() {
+        document.addEventListener('keydown', (e) => {
+            const keyCode = e.keyCode || e.which;
+            if (keyCode === 27) this.setState({ collapsed: true });
+        });
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', () => {});
+    }
     
     toggle = (x = 0, y = 0) => this.setState({ collapsed: !this.state.collapsed, x, y });
     

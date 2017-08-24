@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from '../icon';
 import ItemFile from './file';
+import Menu from './directoryMenu';
 
 export default class ItemFolder extends React.Component {
 
@@ -27,8 +28,7 @@ export default class ItemFolder extends React.Component {
 
     onRightClick(e) {
         e.preventDefault();
-        const { path } = this.props;
-        console.log("Right clicked:", path);
+        this.refs.menu.toggle(e.clientX, e.clientY);
     }
 
     createElement(type) {
@@ -67,6 +67,7 @@ export default class ItemFolder extends React.Component {
                         {this.props.name}
                     </div>
                 </div>
+                <Menu ref="menu" {...this.props} />
                 {!collapsed && this.renderSubNodes(files, folders)}
             </div>
         );

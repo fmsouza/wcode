@@ -9,6 +9,17 @@ export default class LeftMenu extends React.Component {
         return Object.keys(this.state.collapsed).map(key => this.state.collapsed[key])
             .reduce((prev, next) => prev || next, false);
     }
+    
+    componentWillMount() {
+        document.addEventListener('keydown', (e) => {
+            const keyCode = e.keyCode || e.which;
+            if (keyCode === 27) this.collapseAll();
+        });
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', () => {});
+    }
 
     collapseAll = () => {
         let { collapsed } = this.state;
