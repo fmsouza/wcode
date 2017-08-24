@@ -2,7 +2,8 @@
   "name": "monaco-web-ide",
   "version": "0.1.0",
   "description": "A rich code editor which runs inside a browser.",
-  "main": "server/index.js",
+  "author": "Frederico Souza (fredericoamsouza@gmail.com)",
+  "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
     "url": "https://github.com/fmsouza/monaco-web-ide.git"
@@ -11,15 +12,16 @@
     "node": ">=6",
     "npm": ">=3"
   },
-  "author": "Frederico Souza (fredericoamsouza@gmail.com)",
-  "license": "SEE LICENSE IN LICENSE",
+  "main": "./server/index.js",
+  "bin": "./server/index.js",
   "scripts": {
     "build": "NODE_ENV=production rollup -c config/prod.js",
     "build:dev": "NODE_ENV=development rollup -c config/dev.js -w",
     "browse": "browser-sync start --s --index public/index.dev.html --files build/**/*.js --no-notify",
+    "prepublish": "npm run build",
     "server:dev": "NODE_ENV=development node server .",
     "start": "npm-run-all --parallel build:dev server:dev browse",
-    "start:prod": "NODE_ENV=production node server .",
+    "start:prod": "node server",
     "test": "NODE_ENV=test jest --colors --watch"
   },
   "dependencies": {
