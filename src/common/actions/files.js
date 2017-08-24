@@ -32,6 +32,8 @@ export const closeAllFiles = () => fileBuffer.fileStates.map(({ path }) => close
 
 export const createNewFile = (path) => Writer.createFile({ path });
 
+export const deleteFile = (file) => Writer.deleteFile(file);
+
 export const triggerNewFile = () => {
     let path = '';
     if (fileBuffer.activeFile) {

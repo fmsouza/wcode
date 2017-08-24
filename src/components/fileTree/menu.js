@@ -16,7 +16,10 @@ export default class ArchiveMenu extends React.Component {
     onClickOpen = () => Action.loadFile(this.props);
     
     onClickDelete = () => {
-        console.log("Attempting to delete file...", this.props.path);
+        const fileName = this.props.path.split('/').pop();
+        if (confirm(`Are you sure you want to delete '${fileName}'?`)) {
+            Action.deleteFile(this.props);
+        }
     }
 
     renderMenu = (collapsed) => !collapsed && (

@@ -39,5 +39,5 @@ export const updateFile = (file) => {
 
 export const deleteFile = (file) => {
     if (!ws) return console.error("Connection not opened.");
-    Files.readFile(sendHandler(), file);
+    Files.deleteFile(sendHandler(), file);
 };
