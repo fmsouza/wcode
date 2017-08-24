@@ -1,39 +1,8 @@
 const fs = require('fs');
 const mime = require('mime');
-const { ActionTypes, DEBUG_MODE, NotificationTypes, PROJECT_DIR } = require('../constants');
-const { notify, send } = require('./responses');
-
-const checkPath = (srcPath) => fs.lstatSync(srcPath);
-
-const onError = (ws, message) => {
-    DEBUG_MODE && console.log("Error:", message);
-    notify(ws, message, NotificationTypes.ERROR);
-}
-
-const readDir = (srcPath, folders = []) => {
-    const dirName = srcPath.split('/').pop();
-    const directory = fs.readdirSync(srcPath);
-    const files = [];
-    directory.forEach(name => {
-        const path = `${srcPath}/${name}`;
-        const stat = checkPath(path);
-        if (stat.isFile()) files.push({ name, path, type: mime.lookup(path) });
-        else if (stat.isDirectory()) folders.push(readDir(path));
-    });
-    return { name: dirName, path: srcPath, files, folders };
-}
-
-const readProjectFiles = (ws, payload) => {
-    try {
-        const path = PROJECT_DIR;
-        if (!checkPath(path).isDirectory()) throw new Error('The given path is not a directory.');
-        const response = readDir(path);
-        send(ws, ActionTypes.READ_PROJECT, response);
-        DEBUG_MODE && console.log("readProjectFiles", path, response);
-    } catch (e) {
-        onError(ws, e.message);
-    }
-};
+const { ActionTypes, DEBUG_MODE } = require('../constants');
+const { send } = require('./responses');
+const { checkPath, onError } = require('./utils');
 
 const createFile = (ws, payload) => {
     try {
@@ -81,7 +50,6 @@ const updateFile = (ws, payload) => {
     } catch(e) {
         onError(ws, e.message);
     }
-
 };
 
 const deleteFile = (ws, payload) => {
@@ -94,7 +62,6 @@ const deleteFile = (ws, payload) => {
     } catch (e) {
         onError(ws, e.message);
     }
-
 };
 
-module.exports = { readProjectFiles, createFile, readFile, updateFile, deleteFile };
+module.exports = { createFile, readFile, updateFile, deleteFile };
