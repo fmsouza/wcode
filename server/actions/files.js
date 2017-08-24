@@ -39,7 +39,7 @@ const createFile = (ws, payload) => {
     try {
         const { path } = payload.file;
         if (fs.existsSync(path)) throw new Error('A file with this name already exists.');
-        const content = '';
+        const content = ' ';
         fs.appendFileSync(path, content);
         const response = {
             name: path.split('/').pop(),
@@ -87,7 +87,7 @@ const updateFile = (ws, payload) => {
 const deleteFile = (ws, payload) => {
     try {
         const { path } = payload.file;
-        if (!checkPath(path).isFile()) throw new Error('The given path is not a file.');
+        if (!checkPath(path).isFile()) throw new Error('The given path does not exist.');
         fs.unlinkSync(path);
         send(ws, ActionTypes.DELETE_FILE, { path });
         DEBUG_MODE && console.log("deleteFile", path);
