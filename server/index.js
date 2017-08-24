@@ -17,6 +17,5 @@ wss.on('connection', (ws) => {
 server.listen(SERVER_PORT, SERVER_HOST, () => {
     const address = server.address();
     console.log('Listening on %d', address.port);
-    // open(`http://${address.host}:${address.port}`);
     !DEBUG_MODE && open(`http://${SERVER_HOST}:${SERVER_PORT}`);
 });
