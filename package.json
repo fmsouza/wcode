@@ -1,6 +1,6 @@
 {
   "name": "wcode",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A rich code editor which runs inside a browser.",
   "author": "Frederico Souza (fredericoamsouza@gmail.com)",
   "license": "SEE LICENSE IN LICENSE",
@@ -14,6 +14,11 @@
   },
   "main": "./server/index.js",
   "bin": "./bin",
+  "files": [
+    "bin",
+    "build",
+    "server"
+  ],
   "scripts": {
     "build": "NODE_ENV=production rollup -c config/prod.js",
     "build:dev": "NODE_ENV=development rollup -c config/dev.js -w",
