@@ -1,12 +1,13 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import * as Action from 'common/actions';
+import Menu from './menu';
 
 @inject('fileBuffer')
 @observer
 export default class ItemFile extends React.Component {
 
-    state = { name: '', path: '', type: '' };
+    state = { name: '', path: '', type: '', showMenu: false };
 
     get selected() {
         const { fileBuffer, path } = this.props;
@@ -22,7 +23,7 @@ export default class ItemFile extends React.Component {
     onRightClick(e) {
         e.preventDefault();
         const { path } = this.props;
-        console.log("Right clicked:", path);
+        this.refs.fileMenu.toggle(e.clientX, e.clientY);
     }
 
     onKeyPress = (e) => {
@@ -53,6 +54,7 @@ export default class ItemFile extends React.Component {
                 >
                     <div className="title">{name}</div>
                 </div>
+                <Menu ref="fileMenu" path={path} />
             </div>
         );
     }
