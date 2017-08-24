@@ -9,11 +9,23 @@ It was born on a particular necessity of using such software on any kind of plat
 ## 1. Installation
 
 ```bash
+$ npm install -g wcode
+```
+
+## 2. Usage
+
+```bash
+$ wcode path/to/your/project
+```
+
+## 3. Development
+
+```bash
 $ git clone https://github.com/fmsouza/monaco-web-ide
 $ cd monaco-web-ide && npm install
 ```
 
-## 2. Running
+## 4. Running
 
 #### `npm start`
 
@@ -27,10 +39,10 @@ Produce the production build.
 
 Run the tests.
 
-## 3. Contributing
+## 5. Contributing
 
 PR's and issue reports are welcome.
 
-## 4. Support the project
+## 6. Support the project
 
 Bitcoin: 3DgNhxV1umz7HCdigvyY18kEsNXW9L4Nx2

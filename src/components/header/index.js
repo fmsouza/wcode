@@ -5,7 +5,7 @@ import './styles.css';
 export default (props) => (
     <div className="Header">
         <div className="left side">
-            <span className="name item">Monaco-web-ide</span>
+            <span className="name item">wcode</span>
             <LeftMenu className="item" />
         </div>
         <div className="right side" />

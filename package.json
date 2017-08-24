@@ -1,12 +1,12 @@
 {
-  "name": "monaco-web-ide",
+  "name": "wcode",
   "version": "0.1.0",
   "description": "A rich code editor which runs inside a browser.",
   "author": "Frederico Souza (fredericoamsouza@gmail.com)",
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fmsouza/monaco-web-ide.git"
+    "url": "https://github.com/fmsouza/wcode.git"
   },
   "engines": {
     "node": ">=6",
