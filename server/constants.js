@@ -1,6 +1,8 @@
 const { resolve } = require('path');
 const fs = require('fs');
 
+const SERVER_PATH = __dirname;
+
 const DEBUG_MODE = process.env.NODE_ENV === 'development';
 
 const loadedDir = (process.argv[2]) ? resolve(process.argv[2]) : '';
@@ -43,6 +45,7 @@ const NotificationTypes = {
 module.exports = {
     DEBUG_MODE,
     PROJECT_DIR,
+    SERVER_PATH,
     SERVER_HOST,
     SERVER_PORT,
     ActionTypes,
