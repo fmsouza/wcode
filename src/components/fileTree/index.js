@@ -11,8 +11,15 @@ export default class FileTree extends React.Component {
 
     childFolders = {};
 
+    limitText = 20;
+    
     get iconName() {
         return (this.state.collapsed) ? 'chevron-right' : 'chevron-down';
+    }
+
+    get projectName() {
+        const { title } = this.props;
+        return (title.length > this.limitText) ? `${title.slice(0, this.limitText)}...` : title;
     }
     
     componentWillMount() {
@@ -68,13 +75,12 @@ export default class FileTree extends React.Component {
     }
 
     render() {
-        const { title } = this.props;
         return (
             <div className="FileTree">
                 <div className="rootTitle title">
                     <div className="left column" onClick={() => this.setState({ collapsed: !this.state.collapsed })}>
                         <Icon name={this.iconName} className="icon" />
-                        {title}
+                        {this.projectName}
                     </div>
                     <div className="right column">
                         <Icon name="new-file" className="icon" onClick={() => Action.triggerNewFile()} />

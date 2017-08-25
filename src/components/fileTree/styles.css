@@ -17,8 +17,8 @@
 .FileTree .rootTitle {
     justify-content: space-between;
     background-color: #383838;
-    color: #CCCCCC;
     height: 24px;
+    color: #CCCCCC;
     padding-left: 4px;
     cursor: pointer;
     font-weight: 600;
@@ -31,10 +31,20 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.FileTree .rootTitle .column {
+    z-index: 50;
 }
 
 .FileTree .rootTitle .right.column {
     display: none;
+    position: fixed;
+    left: 146px;
+    background-color: #383838;
+    height: 23px;
 }
 
 .FileTree:hover .rootTitle .right.column {
