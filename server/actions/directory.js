@@ -1,6 +1,7 @@
 const fs = require('fs');
 const mime = require('mime');
 const rimraf = require('rimraf');
+const resolve = require('path').resolve;
 const { ActionTypes, DEBUG_MODE, PROJECT_DIR } = require('../constants');
 const { send } = require('./responses');
 const { checkPath, onError } = require('./utils');
@@ -20,7 +21,7 @@ const readDir = (srcPath, folders = []) => {
 
 const readProjectFiles = (ws, payload) => {
     try {
-        const path = PROJECT_DIR;
+        const path = resolve(PROJECT_DIR);
         if (!checkPath(path).isDirectory()) throw new Error('The given path is not a directory.');
         const response = readDir(path);
         send(ws, ActionTypes.READ_PROJECT, response);

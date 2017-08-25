@@ -1,22 +1,10 @@
-const { resolve } = require('path');
-const fs = require('fs');
+const { projectDir, port } = require('./args')(process.argv);
 
+const DEBUG_MODE  = process.env.NODE_ENV === 'development';
 const SERVER_PATH = __dirname;
-
-const DEBUG_MODE = process.env.NODE_ENV === 'development';
-
-const loadedDir = (process.argv[2]) ? resolve(process.argv[2]) : '';
-if (!loadedDir) {
-    console.log("You must specify the project path.\n");
-    process.exit(1);
-} else if (!fs.lstatSync(loadedDir).isDirectory()) {
-    console.log("The path must be a directory.\n");
-    process.exit(1);
-}
-
-const PROJECT_DIR = (process.argv[2]) ? resolve(process.argv[2]) : '';
+const PROJECT_DIR = projectDir || '';
 const SERVER_HOST = '0.0.0.0';
-const SERVER_PORT = 8080;
+const SERVER_PORT = port || 9876;
 
 const ActionTypes = {
     READ_PROJECT:     'action/project/read',
