@@ -18,6 +18,8 @@ $ npm install -g wcode
 $ wcode path/to/your/project
 ```
 
+> It will run in http://0.0.0.0:9876 and for now this address is not configurable.
+
 ## 3. Development
 
 ```bash
@@ -29,7 +31,7 @@ $ cd wcode && npm install
 
 #### `npm start`
 
-Runs the web application in the server address http://localhost:3000
+Runs the web application in the address http://localhost:3000, and the server in http://localhost:8080
 
 #### `npm run build`
 
