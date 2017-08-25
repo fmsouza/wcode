@@ -8,26 +8,27 @@ It was born on a particular necessity of using such software on any kind of plat
 
 ## 1. Installation
 
-```bash
-$ npm install -g wcode
-```
+    $ npm install -g wcode
 
 ## 2. Usage
 
-```bash
-$ wcode path/to/your/project
-```
+    $ wcode path/to/your/project
 
 > It will run in http://0.0.0.0:9876 and for now this address is not configurable.
 
-## 3. Development
+## 3. Keyboard shortcuts
 
-```bash
-$ git clone https://github.com/fmsouza/wcode.git
-$ cd wcode && npm install
-```
+* [ctrl + s] or [command + s] -> Save file
+* [ctrl + w] -> Close file
+* [alt + right] -> View the next file
+* [alt + left] -> View the previous file
 
-## 4. Running
+## 4. Development
+
+    $ git clone https://github.com/fmsouza/wcode.git
+    $ cd wcode && npm install
+
+## 5. Running
 
 #### `npm start`
 
@@ -41,10 +42,10 @@ Produce the production build.
 
 Run the tests.
 
-## 5. Contributing
+## 6. Contributing
 
 PR's and issue reports are welcome. For further details, please read the terms at [CONTRIBUTING](./CONTRIBUTING.md).
 
-## 6. Support the project
+## 7. Support the project
 
 Bitcoin: 3DgNhxV1umz7HCdigvyY18kEsNXW9L4Nx2
