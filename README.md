@@ -43,7 +43,7 @@ Run the tests.
 
 ## 5. Contributing
 
-PR's and issue reports are welcome.
+PR's and issue reports are welcome. For further details, please read the terms at [CONTRIBUTING](./CONTRIBUTING.md).
 
 ## 6. Support the project
 
