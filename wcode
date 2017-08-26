@@ -14,6 +14,9 @@ require('yargs')
     .example(`${package.name} /path/to/project`, 'Open the project in the editor on default port')
     .example(`${package.name} -p 8080 /path/to/project`, 'Open the project in the editor on port 8080')
     .demandCommand(1)
+    
+    .help('h')
+    .alias('h', 'help')
 
     .alias('p', 'port')
     .nargs('p', 1)
@@ -21,9 +24,6 @@ require('yargs')
     .default('p', 9876)
 
     .alias('v', 'version')
-    .describe('v', 'Show current version')
-
-    .help('h')
-    .alias('h', 'help');
+    .describe('v', 'Show current version');
 
 require('./server');
