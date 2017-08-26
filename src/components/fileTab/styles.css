@@ -1,6 +1,6 @@
 .FileTab {
     cursor: pointer;
-    width: 100px;
+    width: auto;
     height: inherit;
     display: flex;
     flex-direction: row;
