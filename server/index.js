@@ -1,6 +1,6 @@
 const express = require('express');
 const http = require('http');
-const { open } = require('openurl');
+const { open } = require('./utils');
 const path = require('path');
 const WebSocket = require('ws');
 const { ActionTypes, DEBUG_MODE, SERVER_PATH, SERVER_HOST, SERVER_PORT } = require('./constants');
@@ -18,5 +18,7 @@ wss.on('connection', (ws) => {
 server.listen(SERVER_PORT, SERVER_HOST, () => {
     const address = server.address();
     console.log('Listening on %d', address.port);
-    !DEBUG_MODE && open(`http://${SERVER_HOST}:${SERVER_PORT}`);
+    !DEBUG_MODE && open(`http://${SERVER_HOST}:${SERVER_PORT}`, (error) => {
+        console.log(`Error opening browser: ${error.message}`);
+    });
 });
