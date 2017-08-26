@@ -2,7 +2,8 @@
 
 if (process.argv.indexOf('-v') > -1 || process.argv.indexOf('--version') > -1) {
     const fs = require('fs');
-    const version = JSON.parse(fs.readFileSync('./package.json').toString('utf-8')).version;
+    const resolve = require('path').resolve;
+    const version = JSON.parse(fs.readFileSync(resolve(__dirname, './package.json')).toString('utf-8')).version;
     console.log(version);
     process.exit();
 }
