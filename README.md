@@ -12,9 +12,16 @@ It was born on a particular necessity of using such software on any kind of plat
 
 ## 2. Usage
 
-    $ wcode path/to/your/project
+    $ wcode [options] <directory>
 
-> It will run in http://0.0.0.0:9876 and for now this address is not configurable.
+    Options:
+    -h, --help     Show help
+    -p, --port     Set the editor port number                      [default: 9876]
+    -v, --version  Show current version
+
+    Examples:
+    wcode /path/to/project          Open the project in the editor on default port
+    wcode -p 8080 /path/to/project  Open the project in the editor on port 8080
 
 ## 3. Keyboard shortcuts
 
@@ -32,7 +39,7 @@ It was born on a particular necessity of using such software on any kind of plat
 
 #### `npm start`
 
-Runs the web application in the address http://localhost:3000, and the server in http://localhost:8080
+Runs the web application in the address http://localhost:3000, and the server in http://localhost:9876
 
 #### `npm run build`
 
