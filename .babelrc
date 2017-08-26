@@ -9,7 +9,12 @@
             "plugins": [
                 "external-helpers",
                 "transform-decorators-legacy",
-                ["module-alias", [{ "src": "./src/common", "expose": "common" }]]
+                ["module-resolver", {
+                  "root": ["./src"],
+                  "alias": {
+                    "common": "./common"
+                  }
+                }]
             ]
         },
         "production": {
@@ -21,14 +26,24 @@
             "plugins": [
                 "external-helpers",
                 "transform-decorators-legacy",
-                ["module-alias", [{ "src": "./src/common", "expose": "common" }]]
+                ["module-resolver", {
+                  "root": ["./src"],
+                  "alias": {
+                    "common": "./common"
+                  }
+                }]
             ]
         },
         "test": {
             "presets": ["es2015", "stage-0", "react"],
             "plugins": [
                 "transform-decorators-legacy",
-                ["module-alias", { "src": "./src/common", "expose": "common" }]
+                ["module-resolver", {
+                  "root": ["./src"],
+                  "alias": {
+                    "common": "./common"
+                  }
+                }]
             ]
         }
     }
