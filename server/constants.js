@@ -1,10 +1,10 @@
-const { projectDir, port } = require('./args')(process.argv);
+const yargs = require('yargs').argv;
 
 const DEBUG_MODE  = process.env.NODE_ENV === 'development';
 const SERVER_PATH = __dirname;
-const PROJECT_DIR = projectDir || '';
+const PROJECT_DIR = yargs._[0] || '';
 const SERVER_HOST = '0.0.0.0';
-const SERVER_PORT = port || 9876;
+const SERVER_PORT = yargs.port || 9876;
 
 const ActionTypes = {
     READ_PROJECT:     'action/project/read',

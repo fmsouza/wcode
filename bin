@@ -1,4 +1,27 @@
 #!/usr/bin/env node
 
-'use strict';
+if (process.argv.indexOf('-v') > -1 || process.argv.indexOf('--version') > -1) {
+    const fs = require('fs');
+    const version = JSON.parse(fs.readFileSync('./package.json').toString('utf-8')).version;
+    console.log(version);
+    process.exit();
+}
+
+require('yargs')
+    .usage('Usage: $0 [options] <directory>')
+    .example('$0 /path/to/project', 'Open the project in the editor on default port')
+    .example('$0 -p 8080 /path/to/project', 'Open the project in the editor on port 8080')
+    .demandCommand(1)
+
+    .alias('p', 'port')
+    .nargs('p', 1)
+    .describe('p', 'Set the editor port number')
+    .default('p', 9876)
+
+    .alias('v', 'version')
+    .describe('v', 'Show current version')
+
+    .help('h')
+    .alias('h', 'help');
+
 require('./server');
