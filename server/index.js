@@ -1,6 +1,6 @@
 const express = require('express');
 const http = require('http');
-const open = require('opn');
+const { open } = require('openurl');
 const path = require('path');
 const WebSocket = require('ws');
 const { ActionTypes, DEBUG_MODE, SERVER_PATH, SERVER_HOST, SERVER_PORT } = require('./constants');
