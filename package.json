@@ -1,6 +1,6 @@
 {
   "name": "wcode",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "A rich code editor which runs inside a browser.",
   "author": "Frederico Souza (fredericoamsouza@gmail.com)",
   "license": "MIT",
