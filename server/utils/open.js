@@ -1,23 +1,16 @@
 const spawn = require('child_process').spawn;
 
-module.exports = function (url, callback) {
-    let command;
-    
-    switch(process.platform) {
-        case 'darwin':
-            command = 'open';
-            break;
-
-        case 'win32':
-            command = 'explorer.exe';
-            break;
-
+const getCommand = (platform) => {
+    switch (platform) {
+        case 'darwin': return 'open';
+        case 'win32': return 'explorer.exe';
         default:
-        case 'linux':
-            command = 'xdg-open';
-            break;
+        case 'linux': return 'xdg-open';
     }
+};
 
+module.exports = function (url, callback) {
+    const command = getCommand(process.platform);
     const child = spawn(command, [url]);
     let errorText = '';
     child.stderr.setEncoding('utf8');
