@@ -23,7 +23,6 @@
     "build": "NODE_ENV=production rollup -c config/prod.js",
     "build:dev": "NODE_ENV=development rollup -c config/dev.js -w",
     "browse": "browser-sync start --s --index public/index.dev.html --files build/**/*.js --no-notify",
-    "postinstall": "termux-fix-shebang ./bin || echo 'Not in termux'",
     "prepare": "npm run build",
     "server:dev": "NODE_ENV=development node server .",
     "start": "npm-run-all --parallel build:dev server:dev browse",
