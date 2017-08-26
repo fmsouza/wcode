@@ -1,6 +1,6 @@
 {
   "name": "wcode",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A rich code editor which runs inside a browser.",
   "author": "Frederico Souza (fredericoamsouza@gmail.com)",
   "license": "MIT",
@@ -26,7 +26,6 @@
     "prepare": "npm run build",
     "server:dev": "NODE_ENV=development node server .",
     "start": "npm-run-all --parallel build:dev server:dev browse",
-    "start:prod": "./wcode",
     "test": "NODE_ENV=test jest --colors --watch"
   },
   "dependencies": {
