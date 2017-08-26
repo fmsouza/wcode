@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 
+const fs = require('fs');
+const resolve = require('path').resolve;
+const package = JSON.parse(fs.readFileSync(resolve(__dirname, './package.json')).toString('utf-8'));
+
 if (process.argv.indexOf('-v') > -1 || process.argv.indexOf('--version') > -1) {
-    const fs = require('fs');
-    const resolve = require('path').resolve;
-    const version = JSON.parse(fs.readFileSync(resolve(__dirname, './package.json')).toString('utf-8')).version;
-    console.log(version);
+    console.log(package.version);
     process.exit();
 }
 
 require('yargs')
-    .usage('Usage: $0 [options] <directory>')
-    .example('$0 /path/to/project', 'Open the project in the editor on default port')
-    .example('$0 -p 8080 /path/to/project', 'Open the project in the editor on port 8080')
+    .usage(`Usage: ${package.name} [options] <directory>`)
+    .example(`${package.name} /path/to/project`, 'Open the project in the editor on default port')
+    .example(`${package.name} -p 8080 /path/to/project`, 'Open the project in the editor on port 8080')
     .demandCommand(1)
 
     .alias('p', 'port')
