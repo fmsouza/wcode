@@ -16,7 +16,7 @@ It was born on a particular necessity of using such software on any kind of plat
 
     Options:
     -h, --help     Show help
-    -p, --port     Set the editor port number                      [default: 9876]
+    -p, --port     Set the editor port number [default: 9876]
     -v, --version  Show current version
 
     Examples:
@@ -39,7 +39,8 @@ It was born on a particular necessity of using such software on any kind of plat
 
 #### `npm start`
 
-Runs the web application in the address http://localhost:3000, and the server in http://localhost:9876
+Runs the application in the address http://localhost:9876.
+Wait a few seconds and the web application will be built and ready for using in the browser.
 
 #### `npm run build`
 
