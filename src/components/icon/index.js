@@ -14,6 +14,8 @@ export default ({ name, ...props }) => {
         case 'collapse': return <Icons.Collapse {...props} />;
         case 'explorer': return <Icons.Explorer {...props} />;
         case 'file': return <Icons.File {...props} />;
+        case 'folder': return <Icons.Folder {...props} />;
+        case 'folder-open': return <Icons.FolderOpen {...props} />;
         case 'new-file': return <Icons.NewFile {...props} />;
         case 'new-folder': return <Icons.NewFolder {...props} />;
         case 'refresh': return <Icons.Refresh {...props} />;

@@ -7,8 +7,12 @@ export default class ItemFolder extends React.Component {
 
     state = { collapsed: true, files: [], folders: [] };
     
-    get iconName() {
+    get chevronName() {
         return (this.state.collapsed) ? 'chevron-right' : 'chevron-down';
+    }
+    
+    get folderName() {
+        return (this.state.collapsed) ? 'folder' : 'folder-open';
     }
 
     componentWillMount() {
@@ -63,7 +67,8 @@ export default class ItemFolder extends React.Component {
             <div className="ItemFolder">
                 <div className="node" onClick={() => this.onClick()} onContextMenu={(e) => this.onRightClick(e)}>
                     <div className="title">
-                        <Icon name={this.iconName} className="icon" />
+                        <Icon name={this.chevronName} className="icon" />
+                        <Icon name={this.folderName} className="icon" />
                         {this.props.name}
                     </div>
                 </div>

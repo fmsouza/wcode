@@ -4,6 +4,8 @@ export * from './close';
 export * from './collapse';
 export * from './explorer';
 export * from './file';
+export * from './folder';
+export * from './folderOpen';
 export * from './newFile';
 export * from './newFolder';
 export * from './refresh';

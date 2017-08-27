@@ -1,6 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import * as Action from 'common/actions';
+import Icon from '../icon';
 import Menu from './fileMenu';
 
 @inject('fileBuffer')
@@ -62,6 +63,7 @@ export default class ItemFile extends React.Component {
                     onClick={() => onClick({ name, path, type })}
                     onContextMenu={(e) => this.onRightClick(e)}
                 >
+                    <Icon name="file" className="icon" />
                     <div className="title">{name}</div>
                 </div>
                 <Menu ref="menu" {...this.props} />

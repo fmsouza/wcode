@@ -74,6 +74,14 @@
 .FileTree .node .title {
     font-size: 13px;
     white-space: nowrap;
+    width: auto;
+}
+
+.FileTree .node .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    fill: #CBCBCB;
 }
 
 .FileTree .node:hover {
@@ -90,7 +98,8 @@
 }
 
 .FileTree .ItemFile .node {
-    padding-left: 28px;
+    padding-left: 35px;
+    width: 100%;
 }
 
 .FileTree .node input {
