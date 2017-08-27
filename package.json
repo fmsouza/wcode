@@ -20,8 +20,9 @@
     "server"
   ],
   "scripts": {
-    "build": "rimraf build/ && NODE_ENV=production rollup -c",
-    "build:dev": "rimraf build/ && NODE_ENV=development rollup -c -w",
+    "build": "npm run clean && NODE_ENV=production rollup -c",
+    "build:dev": "NODE_ENV=development rollup -c -w",
+    "clean": "rimraf build/",
     "prepare": "npm run build",
     "server:dev": "NODE_ENV=development node server .",
     "start": "npm-run-all --parallel build:dev server:dev",
