@@ -17,10 +17,9 @@ export default class TextEditor extends React.Component {
     };
 
     get requireConfig() {
-        const basePath = (General.DEBUG) ? '../build/vendor' : 'vendor';
         return {
-            url: `${basePath}/vs/loader.js`,
-            paths: { 'vs': `${basePath}/vs` }
+            url: `vendor/vs/loader.js`,
+            paths: { 'vs': `vendor/vs` }
         };
     }
 

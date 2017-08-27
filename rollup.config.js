@@ -4,11 +4,16 @@ import cjs from 'rollup-plugin-commonjs';
 import copy from 'rollup-plugin-copy';
 import globals from 'rollup-plugin-node-globals';
 import postcss from 'rollup-plugin-postcss';
+import path from 'path';
 import replace from 'rollup-plugin-replace';
 import resolve from 'rollup-plugin-node-resolve';
-import path from 'path';
+import uglify from 'rollup-plugin-uglify';
 
-import variables from './dev.variables';
+const isProduction = process.env.NODE_ENV === "production";
+
+const variables = {
+  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+};
 
 export default {
   input: 'src/index.js',
@@ -19,6 +24,9 @@ export default {
   plugins: [
     copy({
         "node_modules/monaco-editor/min/vs": "build/vendor/vs",
+        "public/favicon.ico": "build/favicon.ico",
+        "public/manifest.json": "build/manifest.json",
+        "public/index.html": "build/index.html"
     }),
     alias({ 'vs': path.resolve('node_modules/monaco-editor/min/vs') }),
     postcss({
@@ -51,7 +59,8 @@ export default {
     resolve({
       browser: true,
       main: true
-    })
+    }),
+    isProduction && uglify()
   ],
   sourcemap: true
 }
