@@ -5,6 +5,7 @@ const SERVER_PATH = __dirname;
 const PROJECT_DIR = yargs._[0] || '';
 const SERVER_HOST = '0.0.0.0';
 const SERVER_PORT = yargs.port || 9876;
+const APPLICATION_PATH = '../build';
 
 const ActionTypes = {
     READ_PROJECT:     'action/project/read',
@@ -31,6 +32,7 @@ const NotificationTypes = {
 };
 
 module.exports = {
+    APPLICATION_PATH,
     DEBUG_MODE,
     PROJECT_DIR,
     SERVER_PATH,
