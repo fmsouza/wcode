@@ -64,11 +64,10 @@ export default class FileTree extends React.Component {
         />
     );
 
-    renderFileTree(collapsed) {
-        if (collapsed) return null;
+    renderFileTree(visible) {
         const { files, folders } = this.state;
         return (
-            <div className="rootContent subnodes no-padding">
+            <div className={`rootContent subnodes no-padding ${visible && 'visible'}`}>
                 {[].concat(folders.map(this.renderFolder)).concat(files.map(this.renderFile))}
             </div>
         );
@@ -89,7 +88,7 @@ export default class FileTree extends React.Component {
                         <Icon name="collapse" className="icon" onClick={() => this.collapseAll()} />
                     </div>
                 </div>
-                {this.renderFileTree(this.state.collapsed)}
+                {this.renderFileTree(!this.state.collapsed)}
             </div>
         );
     }

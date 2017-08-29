@@ -59,6 +59,11 @@
     height: inherit;
     overflow-y: auto;
     overflow-x: hidden;
+    opacity: 0;
+}
+
+.FileTree .rootContent.visible {
+    opacity: 1;
 }
 
 .FileTree .node {
