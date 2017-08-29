@@ -1,6 +1,6 @@
 .FileTab {
     cursor: pointer;
-    width: 100px;
+    width: auto;
     height: inherit;
     display: flex;
     flex-direction: row;
@@ -21,9 +21,11 @@
 }
 
 .FileTab .title {
+    height: 100%;
+    display: flex;
+    align-items: center;
     color: #969696;
     font-size: 12px;
-    overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
