@@ -23,6 +23,9 @@ require('yargs')
     .describe('p', 'Set the editor port number')
     .default('p', 9876)
 
+    .options({ headless: { default: false, type: 'boolean' } })
+    .describe('headless', 'Prevent local browser from open')
+
     .alias('v', 'version')
     .describe('v', 'Show current version');
 
