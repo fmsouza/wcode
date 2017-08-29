@@ -12,7 +12,7 @@ if (SSL_KEYS) {
         const keys = security.readSSLKeys(SSL_KEYS);
         const https = require('https');
         const fs = require('fs');
-        server = https.createServer(keys);
+        server = https.createServer(keys, app);
     } catch (e) {
         console.error(e.message);
         process.exit(1);
@@ -35,7 +35,8 @@ server.listen(SERVER_PORT, SERVER_HOST, () => {
     const address = server.address();
     console.log('Listening on %d', address.port);
 
-    !NO_BROWSER && open(`http://${SERVER_HOST}:${SERVER_PORT}`, (error) => {
+    const protocol = (SSL_KEYS) ? 'https' : 'http';
+    !NO_BROWSER && open(`${protocol}://${SERVER_HOST}:${SERVER_PORT}`, (error) => {
         console.log(`Error opening browser: ${error.message}`);
     });
 });
