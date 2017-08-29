@@ -6,6 +6,6 @@ import './styles.css';
 export default ({ name, path, active, onClick }) => (
     <div className={`FileTab ${active && 'active'}`}>
         <div className="title" children={name} onClick={() => onClick({ name, path })} />
-        {active && <Icon name="close" className="icon" onClick={() => Action.closeFile(path)} />}
+        <Icon name="close" className="icon" onClick={() => Action.closeFile(path)} />
     </div>
 );

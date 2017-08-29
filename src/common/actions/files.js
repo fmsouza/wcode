@@ -17,10 +17,12 @@ export const loadFile = ({ path }) => (fileBuffer.exists(path)) ?
     Action.viewCode(path) : Writer.readFile({ path });
 
 export const closeFile = (filePath) => {
+    if (fileBuffer.activeFilePath === filePath) {
+        const lastOpenedFile = fileBuffer.lastOpenedFile();
+        if (lastOpenedFile) Action.viewCode(lastOpenedFile);
+        else Action.cleanCode();
+    }
     fileBuffer.close(filePath);
-    const lastOpenedFile = fileBuffer.lastOpenedFile();
-    if (lastOpenedFile) Action.viewCode(lastOpenedFile);
-    else Action.cleanCode();
 };
 
 export const closeCurrentFile = () => {
