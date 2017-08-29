@@ -1,8 +1,9 @@
 // {bool} DEBUG - Toggles debug mode on or off.
 export const DEBUG = process.env.NODE_ENV === "development";
 
+const protocol = (location.protocol.includes('https')) ? 'wss' : 'ws';
 // {string} API_URL - Backend API HTTP address
-export const API_URL = (DEBUG) ? 'ws://localhost:9876' : `ws://${location.host}`;
+export const API_URL = `${protocol}://${location.host}`;
 
 // {string} CONTACT_EMAIL - Support e-mail address
 export const CONTACT_EMAIL = "fredericoamsouza@gmail.com";

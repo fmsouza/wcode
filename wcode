@@ -13,6 +13,7 @@ require('yargs')
     .usage(`Usage: ${package.name} [options] <directory>`)
     .example(`${package.name} /path/to/project`, 'Open the project in the editor on default port')
     .example(`${package.name} -p 8080 /path/to/project`, 'Open the project in the editor on port 8080')
+    .example(`${package.name} --ssl path/to/keys /path/to/project`, 'Open the project with SSL in the editor on default port')
     .demandCommand(1)
     
     .help('h')
@@ -23,8 +24,12 @@ require('yargs')
     .describe('p', 'Set the editor port number')
     .default('p', 9876)
 
-    .options({ headless: { default: false, type: 'boolean' } })
+    .options({
+        headless: { default: false, type: 'boolean' },
+        ssl: { type: 'string' },
+    })
     .describe('headless', 'Prevent local browser from open')
+    .describe('ssl', 'Configures SSL encrpytion. Provide the keys.')
 
     .alias('v', 'version')
     .describe('v', 'Show current version');
