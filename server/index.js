@@ -1,13 +1,28 @@
 const express = require('express');
-const http = require('http');
-const { open } = require('./utils');
+const { open, security } = require('./utils');
 const path = require('path');
 const WebSocket = require('ws');
 const router = require('./router');
-const { ActionTypes, APPLICATION_PATH, DEBUG_MODE, NO_BROWSER, SERVER_HOST, SERVER_PATH, SERVER_PORT } = require('./constants');
+const { ActionTypes, APPLICATION_PATH, DEBUG_MODE, NO_BROWSER, SERVER_HOST, SERVER_PATH, SERVER_PORT, SSL_KEYS } = require('./constants');
 
 const app = express();
-const server = http.createServer(app);
+let server = null;
+if (SSL_KEYS) {
+    try {
+        const keys = security.readSSLKeys(SSL_KEYS);
+        const https = require('https');
+        const fs = require('fs');
+        server = https.createServer(keys);
+    } catch (e) {
+        console.error(e.message);
+        process.exit(1);
+    }
+
+} else {
+    const http = require('http');
+    server = http.createServer(app);
+}
+
 const wss = new WebSocket.Server({ server });
 
 app.use(express.static(path.resolve(SERVER_PATH, APPLICATION_PATH)));

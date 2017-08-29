@@ -7,6 +7,7 @@ const PROJECT_DIR = yargs._[0] || '';
 const SERVER_HOST = '0.0.0.0';
 const SERVER_PATH = __dirname;
 const SERVER_PORT = yargs.port || 9876;
+const SSL_KEYS    = yargs.ssl;
 
 const ActionTypes = {
     READ_PROJECT:     'action/project/read',
@@ -40,6 +41,7 @@ module.exports = {
     SERVER_HOST,
     SERVER_PATH,
     SERVER_PORT,
+    SSL_KEYS,
     ActionTypes,
     NotificationTypes,
 };
