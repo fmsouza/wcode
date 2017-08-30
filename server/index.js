@@ -6,6 +6,7 @@ const router = require('./router');
 const { ActionTypes, APPLICATION_PATH, DEBUG_MODE, NO_BROWSER, SERVER_HOST, SERVER_PATH, SERVER_PORT, SSL_KEYS } = require('./constants');
 
 const app = express();
+
 let server = null;
 if (SSL_KEYS) {
     try {
@@ -25,11 +26,21 @@ if (SSL_KEYS) {
 
 const wss = new WebSocket.Server({ server });
 
-app.use(express.static(path.resolve(SERVER_PATH, APPLICATION_PATH)));
-
 wss.on('connection', (ws) => {
     ws.on('message', (event) => router(ws, event));
 });
+
+if (DEBUG_MODE) {
+    const webpack = require('webpack');
+    const webpackMiddleware = require('webpack-dev-middleware');
+    const webpackConfig = require('../webpack.config');
+    app.use(webpackMiddleware(webpack(webpackConfig)));
+} else {
+    app.use(express.static(path.resolve(SERVER_PATH, APPLICATION_PATH)));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(APPLICATION_PATH, './index.html'));
+    });
+}
 
 server.listen(SERVER_PORT, SERVER_HOST, () => {
     const address = server.address();
