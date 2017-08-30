@@ -9,6 +9,8 @@ if (process.argv.indexOf('-v') > -1 || process.argv.indexOf('--version') > -1) {
     process.exit();
 }
 
+process.env.NODE_ENV = "production";
+
 require('yargs')
     .usage(`Usage: ${package.name} [options] <directory>`)
     .example(`${package.name} /path/to/project`, 'Open the project in the editor on default port')

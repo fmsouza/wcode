@@ -50,7 +50,6 @@ export default class TextEditor extends React.Component {
                     options={this.options}
                     onChange={(value) => this.setState({ value })}
                     editorDidMount={(editor, monaco) => this.editorDidMount(editor, monaco)}
-                    requireConfig={this.requireConfig}
                 />
             </div>
         );

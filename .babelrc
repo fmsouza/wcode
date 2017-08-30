@@ -1,50 +1,12 @@
 {
-    "env": {
-        "development": {
-            "presets": [
-                ["es2015", { "modules": false }],
-                "stage-0",
-                "react"
-            ],
-            "plugins": [
-                "external-helpers",
-                "transform-decorators-legacy",
-                ["module-resolver", {
-                  "root": ["./src"],
-                  "alias": {
-                    "common": "./common"
-                  }
-                }]
-            ]
-        },
-        "production": {
-            "presets": [
-                ["es2015", { "modules": false }],
-                "stage-0",
-                "react"
-            ],
-            "plugins": [
-                "external-helpers",
-                "transform-decorators-legacy",
-                ["module-resolver", {
-                  "root": ["./src"],
-                  "alias": {
-                    "common": "./common"
-                  }
-                }]
-            ]
-        },
-        "test": {
-            "presets": ["es2015", "stage-0", "react"],
-            "plugins": [
-                "transform-decorators-legacy",
-                ["module-resolver", {
-                  "root": ["./src"],
-                  "alias": {
-                    "common": "./common"
-                  }
-                }]
-            ]
-        }
-    }
+    "presets": ["babel-preset-env", "stage-0", "react"],
+    "plugins": [
+        "transform-decorators-legacy",
+        ["module-resolver", {
+          "root": ["./src"],
+          "alias": {
+            "common": "./common"
+          }
+        }]
+    ]
 }
