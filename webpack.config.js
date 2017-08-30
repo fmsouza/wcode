@@ -41,10 +41,9 @@ module.exports = {
       template: 'src/index.html'
     }),
     new CopyWebpackPlugin([
-      {
-        from: 'node_modules/monaco-editor/min/vs',
-        to: 'vs',
-      }
+      { from: 'node_modules/monaco-editor/min/vs', to: 'vs' },
+      { from: './src/manifest.json', to: 'manifest.json' },
+      { from: './src/favicon.ico', to: 'favicon.ico' }
     ])
   ]
 };
