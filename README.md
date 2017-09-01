@@ -28,10 +28,28 @@ It was born on a particular necessity of using such software on any kind of plat
 
 ## 3. Keyboard shortcuts
 
-* [ctrl + s] or [command + s] -> Save file
-* [ctrl + w] -> Close file
-* [alt + right] -> View the next file
-* [alt + left] -> View the previous file
+<table>
+  <tr>
+    <td><b>Combination</b></td>
+    <td><b>Action</b></td>
+  </tr>
+  <tr>
+    <td>[ctrl + s] or [command + s]</td>
+    <td>Save file</td>
+  </tr>
+  <tr>
+    <td>[ctrl + w]</td>
+    <td>Close file</td>
+  </tr>
+  <tr>
+    <td>[alt + right]</td>
+    <td>View the next file</td>
+  </tr>
+  <tr>
+    <td>[alt + left]</td>
+    <td>View the previous file</td>
+  </tr>
+</table>
 
 ## 4. Development
 
