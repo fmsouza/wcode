@@ -6,7 +6,7 @@ const NO_BROWSER = yargs.headless;
 const PROJECT_DIR = yargs._[0] || '';
 const SERVER_HOST = '0.0.0.0';
 const SERVER_PATH = __dirname;
-const SERVER_PORT = yargs.port || 9876;
+const SERVER_PORT = yargs.port || 8080;
 const SSL_KEYS    = yargs.ssl;
 
 const ActionTypes = {
