@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const pm2 = require('pm2');
 const resolve = require('path').resolve;
 const package = JSON.parse(fs.readFileSync(resolve(__dirname, './package.json')).toString('utf-8'));
 
@@ -36,4 +37,15 @@ require('yargs')
     .alias('v', 'version')
     .describe('v', 'Show current version');
 
-require('./server');
+pm2.connect((err) => {
+  if (err) {
+    console.error(err);
+    process.exit(2);
+  }
+  
+  pm2.start(
+    'server/index.js',
+    { autorestart: false },
+    (err, apps) => pm2.disconnect()
+  );
+});
