@@ -43,10 +43,9 @@ pm2.connect((err) => {
     process.exit(2);
   }
   
-  pm2.start('server.js', (err, apps) => {
-    pm2.disconnect();   // Disconnects from PM2
-    if (err) throw err;
-  });
+  pm2.start(
+    'server/index.js',
+    { autorestart: false },
+    (err, apps) => pm2.disconnect()
+  );
 });
-
-require('./server');
