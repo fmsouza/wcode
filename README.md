@@ -77,6 +77,6 @@ PR's and issue reports are welcome. For further details, please read the terms a
 
 ## 7. Support the project
 
-Bitcoin: 1J7reQZwXdfFfyZaHYxNRkivvACs3NcKuw
+Bitcoin: 3No95FNfugjWUtrgkHYKvg6Y9PMeNGfh6P
 
 BitcoinCash: CfkuUBEo1wDNaHhKasqd8RENAY76Lwa79T
