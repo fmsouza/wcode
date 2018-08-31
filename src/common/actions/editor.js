@@ -16,10 +16,31 @@ export const viewCode = (filePath) => {
         fileBuffer.updateCode(previousPath, code);
     }
     fileBuffer.selectFile(filePath);
-    const { content, type } = fileBuffer.activeFile;
-    editorHandler.loadCode(content, type.split('/').pop());
+    const { content, name } = fileBuffer.activeFile;
+    editorHandler.loadCode(content, getLanguage(name.split('.').pop().toLowerCase()));
 }
 
 export const cleanCode = () => editorHandler.loadCode('', '');
 
 export const getCode = () => editorHandler.code;
+
+const getLanguage=(extension)=>{
+    if(extension==='js'){
+        return 'javascript'
+    }else if(extension==='ts'){
+        return 'typescript'
+    }else if(extension==='py'){
+        return 'python'
+    }else if(extension==='md'){
+        return 'markdown'
+    }else if(extension==='sh'){
+        return 'shell'
+    }else if(extension==='yml'){
+        return 'yaml'
+    }else if(extension==='rb'){
+        return 'ruby'
+    }else if(extension==='h'){
+        return 'cpp'
+    }
+    return extension
+}
