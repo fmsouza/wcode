@@ -74,9 +74,3 @@ Run the tests.
 ## 6. Contributing
 
 PR's and issue reports are welcome. For further details, please read the terms at [CONTRIBUTING](./CONTRIBUTING.md).
-
-## 7. Support the project
-
-Bitcoin: 1J7reQZwXdfFfyZaHYxNRkivvACs3NcKuw
-
-BitcoinCash: CfkuUBEo1wDNaHhKasqd8RENAY76Lwa79T
