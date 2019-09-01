@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from '../icon';
 import './styles.css';
+import * as Action from 'common/actions';
 
 const TOOL_EXPLORER = 'explorer';
 const TOOL_SEARCH = 'search';
@@ -33,6 +34,7 @@ export default class ActivityBar extends React.Component {
                             } else {
                                 this.selectOption(TOOL_EXPLORER);
                             }
+                            Action.updateDimensions();
                         }}
                     />
                     {/*

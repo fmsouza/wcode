@@ -42,6 +42,14 @@ export default class TextEditor extends React.Component {
         this.editor.layout(body);
     }
 
+    updateDimensions() {
+        const { body } = this.props;
+        let editor = this.editor;
+        if (editor != null) {
+            editor.layout(body);
+        }
+    }
+
     render() {
         return (
             <div className={`TextEditor ${this.visible && 'visible'}`}>
