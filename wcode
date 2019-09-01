@@ -21,6 +21,7 @@ require('yargs')
     .help('h')
     .alias('h', 'help')
 
+    .alias('a', 'addr')
     .alias('p', 'port')
     .nargs('p', 1)
     .describe('p', 'Set the editor port number')

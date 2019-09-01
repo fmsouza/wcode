@@ -16,7 +16,8 @@ It was born on a particular necessity of using such software on any kind of plat
 
     Options:
     -h, --help          Show help
-    -p, --port          Set the editor port number [default: 9876]
+    -a, --addr          Set the editor listening address [default: 127.0.0.1]
+    -p, --port          Set the editor listening port number [default: 9876]
     --headless          Prevent local browser from open
     --ssl <keys-path>   Configures SSL encrpytion
     -v, --version       Show current version

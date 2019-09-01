@@ -4,10 +4,9 @@ const APPLICATION_PATH = '../build';
 const DEBUG_MODE  = process.env.NODE_ENV === 'development';
 const NO_BROWSER = yargs.headless;
 const PROJECT_DIR = yargs._[0] || '';
-const SERVER_HOST = '0.0.0.0';
+const SERVER_HOST = yargs.addr || '127.0.0.1';
 const SERVER_PATH = __dirname;
 const SERVER_PORT = yargs.port || (DEBUG_MODE && 8080) || 9876;
-console.log(SERVER_PORT);
 const SSL_KEYS    = yargs.ssl;
 
 const ActionTypes = {

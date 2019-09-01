@@ -43,11 +43,10 @@ if (DEBUG_MODE) {
 }
 
 server.listen(SERVER_PORT, SERVER_HOST, () => {
-    const address = server.address();
-    console.log('Listening on %d', address.port);
-
     const protocol = (SSL_KEYS) ? 'https' : 'http';
-    !NO_BROWSER && open(`${protocol}://${SERVER_HOST}:${SERVER_PORT}`, (error) => {
+    const url = `${protocol}://${SERVER_HOST}:${SERVER_PORT}`
+    console.log('Listening on %s', url);
+    !NO_BROWSER && open(url, (error) => {
         console.log(`Error opening browser: ${error.message}`);
     });
 });
