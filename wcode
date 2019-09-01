@@ -12,11 +12,12 @@ if (process.argv.indexOf('-v') > -1 || process.argv.indexOf('--version') > -1) {
 process.env.NODE_ENV = "production";
 
 require('yargs')
-    .usage(`Usage: ${package.name} [options] <directory>`)
+    .usage(`Usage: ${package.name} [options] [<directory>=.]`)
+    .example(`${package.name}`, 'Open the project in the editor on current working directory')
     .example(`${package.name} /path/to/project`, 'Open the project in the editor on default port')
     .example(`${package.name} -p 8080 /path/to/project`, 'Open the project in the editor on port 8080')
     .example(`${package.name} --ssl path/to/keys /path/to/project`, 'Open the project with SSL in the editor on default port')
-    .demandCommand(1)
+    .demandCommand(0)
     
     .help('h')
     .alias('h', 'help')
