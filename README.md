@@ -12,16 +12,18 @@ It was born on a particular necessity of using such software on any kind of plat
 
 ## 2. Usage
 
-    $ wcode [options] <directory>
+    $ wcode [options] [<directory>=.]
 
     Options:
     -h, --help          Show help
-    -p, --port          Set the editor port number [default: 9876]
+    -a, --addr          Set the editor listening address [default: 127.0.0.1]
+    -p, --port          Set the editor listening port number [default: 9876]
     --headless          Prevent local browser from open
     --ssl <keys-path>   Configures SSL encrpytion
     -v, --version       Show current version
 
     Examples:
+    wcode                                       Open the project in the editor on current working directory
     wcode /path/to/project                      Open the project in the editor on default port
     wcode -p 8080 /path/to/project              Open the project in the editor on port 8080
     wcode --ssl path/to/keys /path/to/project   Open the project with SSL in the editor on default port

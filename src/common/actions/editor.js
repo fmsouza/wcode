@@ -1,6 +1,9 @@
 import { fileBuffer } from 'common/stores';
 
+let editorViewHandler = null;
 let editorHandler = null;
+
+export const setEditorViewHandler = (ref) => editorViewHandler = ref;
 
 /**
  * Takes an instance of the code editor as input and use it to handle the code change actions.
@@ -18,6 +21,10 @@ export const viewCode = (filePath) => {
     fileBuffer.selectFile(filePath);
     const { content, name } = fileBuffer.activeFile;
     editorHandler.loadCode(content, getLanguage(name.split('.').pop().toLowerCase()));
+}
+
+export const updateDimensions = () => {
+    editorViewHandler.updateDimensions();
 }
 
 export const cleanCode = () => editorHandler.loadCode('', '');

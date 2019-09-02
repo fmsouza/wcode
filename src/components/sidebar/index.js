@@ -10,8 +10,8 @@ export default class Sidebar extends React.Component {
 
     renderContext() {
         switch (this.state.selectedTool) {
-            case 'explorer': return <Explorer />;
-            case 'search': return <Search />;
+            case 'explorer': return <div className="container"><Explorer /></div>;
+            case 'search': return <div className="container"><Search /></div>;
             default: return null;
         }
     }
@@ -20,9 +20,7 @@ export default class Sidebar extends React.Component {
         return (
             <div className="Sidebar" {...this.props}>
                 <ActivityBar onToolSelect={(selectedTool) => this.setState({ selectedTool })} />
-                <div className="container">
-                    {this.renderContext()}
-                </div>
+                {this.renderContext()}
             </div>
         );
     }

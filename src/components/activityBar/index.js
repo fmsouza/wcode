@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from '../icon';
 import './styles.css';
+import * as Action from 'common/actions';
 
 const TOOL_EXPLORER = 'explorer';
 const TOOL_SEARCH = 'search';
@@ -27,7 +28,14 @@ export default class ActivityBar extends React.Component {
                     <Icon
                         name="explorer"
                         className={`icon ${this.isActive(TOOL_EXPLORER)}`}
-                        onClick={() => this.selectOption(TOOL_EXPLORER)}
+                        onClick={() => {
+                            if (this.isActive(TOOL_EXPLORER)) {
+                                this.selectOption(null);
+                            } else {
+                                this.selectOption(TOOL_EXPLORER);
+                            }
+                            Action.updateDimensions();
+                        }}
                     />
                     {/*
                         <Icon
