@@ -27,7 +27,7 @@
   "dependencies": {
     "express": "4.17.1",
     "keyboardjs": "2.5.1",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "mime": "1.6.0",
     "mobx": "5.13.0",
     "mobx-react": "6.1.3",
