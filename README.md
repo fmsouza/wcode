@@ -1,6 +1,6 @@
 # Wcode
 
-## UNMAINTAINED
+## UNMAINTAINED (alternatively, try [code-server](https://github.com/cdr/code-server)
 
 Wcode is a rich code editor which runs inside a browser. It's totally inspired on [Visual Studio Code](https://github.com/Microsoft/vscode), and also uses [Monaco-editor](https://github.com/Microsoft/monaco-editor) as it's core engine for providing a rich experience. It is being developed with Node.js + Express + React.
 
